@@ -1,88 +1,38 @@
 # Runpod ComfyUI
 
-Pod bootstrap for ComfyUI on RunPod.
+Per-workflow shell scripts for comfyui runpod setup.
 
-JSON in `workflows/` is placeholder; **final graphs keep the same filenames**.
+ComfyUI: `/workspace/runpod-slim/ComfyUI`  
+Repo: `/workspace/runpod-comfyui`
+
+**(REQUIRED)** Install **ComfyUI-GGUF** and **Dev Mode** from the ComfyUI GUI.
 
 ```
-runpod/
-  init.sh          # what the RunPod template should run
-  packs.txt        # short pack names + job + workflow filenames
-  models.txt       # per-pack download list
-  workflows/       # placeholder graphs (same names when replaced)
-  README.md        # setup and flags
+runpod-comfyui/
+  scripts/
+    krea.sh
+    zimage.sh
+    flux.sh
+    ltx.sh
+  workflows/
 ```
 
-## What the script does
+**Local model filenames:** lowercase, underscore-separated. Workflow JSON must match those names.
 
-Always, for the packs you name:
-
-1. Install **ComfyUI-GGUF** into `custom_nodes/` and pip-install `gguf`.
-2. Enable **Comfy Dev Mode** (`Comfy.DevMode` in `user/default/comfy.settings.json`) — UI **Save (API Format)**.
-3. Copy that pack’s placeholder JSON into ComfyUI `user/default/workflows`.
-4. Curl that pack’s weights into `$COMFYUI_PATH/models/…`.
-5. **Reload ComfyUI if it is already running** so GGUF nodes load. If it is not running yet, do nothing — the template starts Comfy after this script, with GGUF already on disk.
-
-No skip flags. Idempotent (existing files are skipped / git pull). You **must name packs**.
-
-## Restart (no one at the keyboard)
-
-Put this script in the template **initialization / start hook so it runs before ComfyUI**. First boot: Comfy is not up yet → step 5 is a no-op → template starts Comfy once, with custom nodes already installed.
-
-If you re-run `init.sh` later and Comfy **is** up, the script:
-
-1. `supervisorctl restart comfyui` when that service exists (ai-dock-style images).
-2. Otherwise stops `…/ComfyUI/main.py` and relaunches it with the same command line (or `--listen 0.0.0.0 --port 8188`).
-
-Do **not** kill Comfy yourself. Do not rely on the web UI “restart”. Killing `main.py` on some start.sh templates can make the entrypoint think Comfy crashed; that is why init prefers “not running → leave it for the template”.
-
-## Packs
+## On the pod terminal
 
 ```bash
-bash init.sh krea
-bash init.sh krea flux
-bash init.sh zimage krea ltx
-```
-
-| Pack     | Job                                  | Workflow files (placeholders)                               |
-| -------- | ------------------------------------ | ----------------------------------------------------------- |
-| `krea`   | text-to-image                        | `text_to_image_krea_2_turbo.json`                           |
-| `zimage` | text-to-image                        | `text_to_image_z_image_turbo.json`                          |
-| `flux`   | image-to-image                       | `image_to_image_flux_kontext.json`                          |
-| `ltx`    | text-to-video **and** image-to-video | `text_to_video_ltx_2.3.json`, `image_to_video_ltx_2.3.json` |
-
-Krea and Z-Image are **not** i2i. i2i is Flux Kontext only. `ltx` installs both video graphs from one pack (same weights).
-
-`WORKFLOWS=krea,flux` is the same as positional packs.
-
-## Setup on RunPod
-
-```bash
-set -euo pipefail
 git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/runpod-comfyui
-bash /workspace/runpod-comfyui/init.sh krea flux
+bash /workspace/runpod-comfyui/scripts/krea.sh
 ```
 
-Template init must run **before** Comfy’s `main.py`.
-Run: `bash /workspace/runpod-comfyui/init.sh krea`.
+Each script copies workflow JSON and curls models (skips existing files; resumes via `.part`).
 
-Optional env: `COMFYUI_PATH`, `WORKFLOWS=krea,zimage`.
+| Script      | Workflow(s)                                                 |
+| ----------- | ----------------------------------------------------------- |
+| `krea.sh`   | `text_to_image_krea_2_turbo.json`                           |
+| `zimage.sh` | `text_to_image_z_image_turbo.json`                          |
+| `flux.sh`   | `image_to_image_flux_kontext.json`                          |
+| `ltx.sh`    | `text_to_video_ltx_2.3.json`, `image_to_video_ltx_2.3.json` |
 
-## Flags
-
-```bash
-bash init.sh --list
-bash init.sh krea --dry-run
-```
-
-| Flag               | Meaning                                       |
-| ------------------ | --------------------------------------------- |
-| positional / `-w`  | Pack to install.                              |
-| `--all`            | Every pack.                                   |
-| `--list`           | Print packs.                                  |
-| `--comfyui <path>` | Else `$COMFYUI_PATH` or `/workspace/ComfyUI`. |
-| `--dry-run`        | Print actions.                                |
-
-## Replacing placeholder graphs
-
-Overwrite the same files in `workflows/` (names in `packs.txt`). Re-run `init.sh krea` (etc.) to copy them onto the pod.
+Run the pack script from the terminal after ComfyUI is up.

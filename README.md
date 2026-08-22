@@ -44,12 +44,12 @@ bash init.sh krea flux
 bash init.sh zimage krea ltx
 ```
 
-| Pack | Job | Workflow files (placeholders) |
-|---|---|---|
-| `krea` | text-to-image | `text_to_image_krea_2_turbo.json` |
-| `zimage` | text-to-image | `text_to_image_z_image_turbo.json` |
-| `flux` | image-to-image | `image_to_image_flux_kontext.json` |
-| `ltx` | text-to-video **and** image-to-video | `text_to_video_ltx_2.3.json`, `image_to_video_ltx_2.3.json` |
+| Pack     | Job                                  | Workflow files (placeholders)                               |
+| -------- | ------------------------------------ | ----------------------------------------------------------- |
+| `krea`   | text-to-image                        | `text_to_image_krea_2_turbo.json`                           |
+| `zimage` | text-to-image                        | `text_to_image_z_image_turbo.json`                          |
+| `flux`   | image-to-image                       | `image_to_image_flux_kontext.json`                          |
+| `ltx`    | text-to-video **and** image-to-video | `text_to_video_ltx_2.3.json`, `image_to_video_ltx_2.3.json` |
 
 Krea and Z-Image are **not** i2i. i2i is Flux Kontext only. `ltx` installs both video graphs from one pack (same weights).
 
@@ -59,7 +59,7 @@ Krea and Z-Image are **not** i2i. i2i is Flux Kontext only. `ltx` installs both 
 
 ```bash
 set -euo pipefail
-git clone --depth 1 <repo-url> /workspace/runpod-comfyui
+git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/runpod-comfyui
 bash /workspace/runpod-comfyui/init.sh krea flux
 ```
 
@@ -75,13 +75,13 @@ bash init.sh --list
 bash init.sh krea --dry-run
 ```
 
-| Flag | Meaning |
-|---|---|
-| positional / `-w` | Pack to install. |
-| `--all` | Every pack. |
-| `--list` | Print packs. |
+| Flag               | Meaning                                       |
+| ------------------ | --------------------------------------------- |
+| positional / `-w`  | Pack to install.                              |
+| `--all`            | Every pack.                                   |
+| `--list`           | Print packs.                                  |
 | `--comfyui <path>` | Else `$COMFYUI_PATH` or `/workspace/ComfyUI`. |
-| `--dry-run` | Print actions. |
+| `--dry-run`        | Print actions.                                |
 
 ## Replacing placeholder graphs
 

@@ -57,7 +57,7 @@ Env:
   WORKFLOWS         Comma-separated packs (same as positional args)
 
 RunPod template example:
-  git clone <repo-url> /workspace/runpod-comfyui
+  git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/runpod-comfyui
   bash /workspace/runpod-comfyui/init.sh krea flux
 EOF
 }

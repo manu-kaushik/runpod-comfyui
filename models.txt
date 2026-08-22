@@ -1,0 +1,32 @@
+# Model download list for init.sh
+# Pack | dest_dir | filename | url
+# pack matches packs.txt (krea=t2i, zimage=t2i, flux=i2i, ltx=t2v+i2v)
+# dest_dir is relative to $COMFYUI_PATH/models/
+# The same dest_dir+filename is downloaded only once even if several
+# selected packs list it.
+#
+# Hugging Face /blob/ URLs must be /resolve/ for curl.
+
+# --- zimage (Unsloth GGUF Q4_K_M + Comfy-Org CLIP/VAE) ---
+zimage|unet|z-image-turbo-Q4_K_M.gguf|https://huggingface.co/unsloth/Z-Image-Turbo-GGUF/resolve/main/z-image-turbo-Q4_K_M.gguf
+zimage|text_encoders|qwen_3_4b.safetensors|https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors
+zimage|vae|ae.safetensors|https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors
+
+# --- krea (vantagewithai GGUF + Comfy-Org CLIP/VAE + realism LoRA) ---
+krea|unet|krea2_turbo-Q4_K_M.gguf|https://huggingface.co/vantagewithai/Krea-2-Turbo-GGUF/resolve/main/krea2_turbo-Q4_K_M.gguf
+krea|text_encoders|qwen3vl_4b_fp8_scaled.safetensors|https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors
+krea|vae|qwen_image_vae.safetensors|https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors
+krea|loras|Krea2-realism-V2.safetensors|https://huggingface.co/RudySen/Krea2-realism-V2/resolve/main/Krea2-realism-V2.safetensors
+
+# --- flux (QuantStack Kontext GGUF + flux CLIP/T5 + FLUX VAE) ---
+flux|unet|flux1-kontext-dev-Q4_K_M.gguf|https://huggingface.co/QuantStack/FLUX.1-Kontext-dev-GGUF/resolve/main/flux1-kontext-dev-Q4_K_M.gguf
+flux|vae|ae.safetensors|https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors
+flux|text_encoders|clip_l.safetensors|https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+flux|text_encoders|t5xxl_fp16.safetensors|https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors
+
+# --- ltx (Unsloth 22B GGUF + distilled/gemma LoRAs + spatial upscaler + Gemma encoder) ---
+ltx|unet|ltx-2.3-22b-dev-Q4_K_M.gguf|https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/ltx-2.3-22b-dev-Q4_K_M.gguf
+ltx|loras|ltx_2.3_22b_distilled_1.1_lora_dynamic_fro09_avg_rank_111_bf16.safetensors|https://huggingface.co/Comfy-Org/ltx-2.3/resolve/main/split_files/loras/ltx_2.3_22b_distilled_1.1_lora_dynamic_fro09_avg_rank_111_bf16.safetensors
+ltx|loras|gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors|https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/loras/gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors
+ltx|latent_upscale_models|ltx-2.3-spatial-upscaler-x2-1.1.safetensors|https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors
+ltx|text_encoders|gemma_3_12B_it_fp4_mixed.safetensors|https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors

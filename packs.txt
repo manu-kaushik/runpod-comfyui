@@ -1,0 +1,13 @@
+# Pack | aliases | job | workflow stems (comma, no .json)
+#
+# Placeholder JSON in workflows/ uses these stems. Final graphs keep the
+# same filenames; only the content changes.
+#
+# krea / zimage = text-to-image only (no i2i)
+# flux          = image-to-image
+# ltx           = text-to-video and image-to-video (same weights)
+
+krea|krea2|t2i|text_to_image_krea_2_turbo
+zimage|z,z-image|t2i|text_to_image_z_image_turbo
+flux|kontext,flux-kontext|i2i|image_to_image_flux_kontext
+ltx|ltx2,ltx-2.3|t2v+i2v|text_to_video_ltx_2.3,image_to_video_ltx_2.3

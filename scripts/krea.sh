@@ -25,7 +25,7 @@ fetch() {
 
 cp -f "$REPO/workflows/text_to_image_krea_2_turbo.json" "$WF/"
 
-fetch "$MODELS/unet/krea2_turbo_q4_k_m.gguf" \
+fetch "$MODELS/diffusion_models/krea2_turbo_q4_k_m.gguf" \
     "https://huggingface.co/vantagewithai/Krea-2-Turbo-GGUF/resolve/main/krea2_turbo-Q4_K_M.gguf"
 
 fetch "$MODELS/text_encoders/qwen3vl_4b_fp8_scaled.safetensors" \

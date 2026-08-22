@@ -26,7 +26,7 @@ fetch() {
 cp -f "$REPO/workflows/text_to_video_ltx_2.3.json" "$WF/"
 cp -f "$REPO/workflows/image_to_video_ltx_2.3.json" "$WF/"
 
-fetch "$MODELS/unet/ltx_2_3_22b_dev_q4_k_m.gguf" \
+fetch "$MODELS/diffusion_models/ltx_2_3_22b_dev_q4_k_m.gguf" \
     "https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/ltx-2.3-22b-dev-Q4_K_M.gguf"
 
 fetch "$MODELS/loras/ltx_2_3_22b_distilled_1_1_lora_dynamic_fro09_avg_rank_111_bf16.safetensors" \

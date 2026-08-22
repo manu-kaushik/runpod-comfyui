@@ -25,7 +25,7 @@ fetch() {
 
 cp -f "$REPO/workflows/text_to_image_z_image_turbo.json" "$WF/"
 
-fetch "$MODELS/unet/z_image_turbo_q4_k_m.gguf" \
+fetch "$MODELS/diffusion_models/z_image_turbo_q4_k_m.gguf" \
     "https://huggingface.co/unsloth/Z-Image-Turbo-GGUF/resolve/main/z-image-turbo-Q4_K_M.gguf"
 
 fetch "$MODELS/text_encoders/qwen_3_4b.safetensors" \

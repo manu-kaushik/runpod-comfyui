@@ -25,7 +25,7 @@ fetch() {
 
 cp -f "$REPO/workflows/image_to_image_flux_kontext.json" "$WF/"
 
-fetch "$MODELS/unet/flux1_kontext_dev_q4_k_m.gguf" \
+fetch "$MODELS/diffusion_models/flux1_kontext_dev_q4_k_m.gguf" \
     "https://huggingface.co/QuantStack/FLUX.1-Kontext-dev-GGUF/resolve/main/flux1-kontext-dev-Q4_K_M.gguf"
 
 fetch "$MODELS/vae/ae.safetensors" \

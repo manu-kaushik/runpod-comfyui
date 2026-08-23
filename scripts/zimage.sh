@@ -23,6 +23,8 @@ fetch() {
     echo "ok $dest"
 }
 
+mkdir -p "$WF"
+
 cp -f "$REPO/workflows/text_to_image_z_image_turbo.json" "$WF/"
 
 fetch "$MODELS/diffusion_models/z_image_turbo_q4_k_m.gguf" \

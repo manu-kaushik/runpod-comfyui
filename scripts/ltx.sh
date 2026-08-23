@@ -23,6 +23,8 @@ fetch() {
     echo "ok $dest"
 }
 
+mkdir -p "$WF"
+
 cp -f "$REPO/workflows/text_to_video_ltx_2.3.json" "$WF/"
 cp -f "$REPO/workflows/image_to_video_ltx_2.3.json" "$WF/"
 

@@ -23,6 +23,8 @@ fetch() {
     echo "ok $dest"
 }
 
+mkdir -p "$WF"
+
 cp -f "$REPO/workflows/image_to_image_flux_kontext.json" "$WF/"
 
 fetch "$MODELS/diffusion_models/flux1_kontext_dev_q4_k_m.gguf" \

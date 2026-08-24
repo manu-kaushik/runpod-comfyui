@@ -25,7 +25,7 @@ fetch() {
 
 mkdir -p "$WF"
 
-cp -f "$REPO/workflows/image_to_image_flux_kontext.json" "$WF/"
+cp -f "$REPO/workflows/image_to_image_flux_1_kontext_dev.json" "$WF/"
 
 fetch "$MODELS/diffusion_models/flux1_kontext_dev_q4_k_m.gguf" \
     "https://huggingface.co/QuantStack/FLUX.1-Kontext-dev-GGUF/resolve/main/flux1-kontext-dev-Q4_K_M.gguf"

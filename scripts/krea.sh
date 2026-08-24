@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
 # Krea 2 Turbo — copy workflow + download models. Run from pod terminal.
+#   --skip-diff  skip downloading the GGUF diffusion model
 
 set -euo pipefail
+
+SKIP_DIFFUSION_MODEL=false
+for arg in "$@"; do
+    [[ "$arg" == --skip-diff ]] && SKIP_DIFFUSION_MODEL=true
+done
 
 COMFYUI=/workspace/runpod-slim/ComfyUI
 REPO=/workspace/runpod-comfyui
@@ -27,8 +33,12 @@ mkdir -p "$WF"
 
 cp -f "$REPO/workflows/text_to_image_krea_2_turbo.json" "$WF/"
 
-fetch "$MODELS/diffusion_models/krea2_turbo_q4_k_m.gguf" \
-    "https://huggingface.co/vantagewithai/Krea-2-Turbo-GGUF/resolve/main/krea2_turbo-Q4_K_M.gguf"
+if [[ "$SKIP_DIFFUSION_MODEL" != true ]]; then
+    fetch "$MODELS/diffusion_models/krea2_turbo_q4_k_m.gguf" \
+        "https://huggingface.co/vantagewithai/Krea-2-Turbo-GGUF/resolve/main/krea2_turbo-Q4_K_M.gguf"
+else
+    echo "skip diffusion model fetch (--skip-diff)"
+fi
 
 fetch "$MODELS/text_encoders/qwen3vl_4b_fp8_scaled.safetensors" \
     "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors"

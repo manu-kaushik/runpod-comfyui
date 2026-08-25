@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# LTX 2.3 t2v — copy workflow + download models. Run from pod terminal.
+# LTX 2.3 t2v + i2v — copy workflows + download models. Run from pod terminal.
 
 set -euo pipefail
 
@@ -27,6 +27,7 @@ fetch() {
 mkdir -p "$WF"
 
 cp -f "$REPO/workflows/text_to_video_ltx_2_3_dev.json" "$WF/"
+cp -f "$REPO/workflows/image_to_video_ltx_2_3_dev.json" "$WF/"
 
 fetch "$MODELS/diffusion_models/ltx_2_3_22b_dev_q4_k_m.gguf" \
     "https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/ltx-2.3-22b-dev-Q4_K_M.gguf"

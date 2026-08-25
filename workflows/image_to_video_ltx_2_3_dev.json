@@ -1,8 +1,8 @@
 {
-  "id": "4b0b115e-6664-41cf-bf4b-ee6ddaa1686f",
+  "id": "c3854cdb-f4a6-4385-bf0a-ac5ba98611b2",
   "revision": 0,
-  "last_node_id": 24,
-  "last_link_id": 27,
+  "last_node_id": 26,
+  "last_link_id": 34,
   "nodes": [
     {
       "id": 10,
@@ -36,56 +36,6 @@
       ],
       "properties": {
         "Node name for S&R": "ConditioningZeroOut"
-      }
-    },
-    {
-      "id": 13,
-      "type": "CFGGuider",
-      "pos": [
-        1415.4937096712224,
-        5694.505922527773
-      ],
-      "size": [
-        270,
-        98
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 26
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 11
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 12
-        }
-      ],
-      "outputs": [
-        {
-          "name": "GUIDER",
-          "type": "GUIDER",
-          "links": [
-            17
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CFGGuider"
-      },
-      "widgets_values": [
-        1
-      ],
-      "widgets_values_named": {
-        "cfg": 1
       }
     },
     {
@@ -238,105 +188,6 @@
       }
     },
     {
-      "id": 16,
-      "type": "SamplerCustomAdvanced",
-      "pos": [
-        2035.5289526247525,
-        5370.383614530942
-      ],
-      "size": [
-        212.3638671875,
-        106
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "noise",
-          "type": "NOISE",
-          "link": 16
-        },
-        {
-          "name": "guider",
-          "type": "GUIDER",
-          "link": 17
-        },
-        {
-          "name": "sampler",
-          "type": "SAMPLER",
-          "link": 15
-        },
-        {
-          "name": "sigmas",
-          "type": "SIGMAS",
-          "link": 14
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 18
-        }
-      ],
-      "outputs": [
-        {
-          "name": "output",
-          "type": "LATENT",
-          "links": [
-            19
-          ]
-        },
-        {
-          "name": "denoised_output",
-          "type": "LATENT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SamplerCustomAdvanced"
-      }
-    },
-    {
-      "id": 8,
-      "type": "EmptyLTXVLatentVideo",
-      "pos": [
-        1455.777359364003,
-        5889.160706229043
-      ],
-      "size": [
-        270,
-        130
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            18
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "EmptyLTXVLatentVideo"
-      },
-      "widgets_values": [
-        512,
-        512,
-        17,
-        1
-      ],
-      "widgets_values_named": {
-        "width": 512,
-        "height": 512,
-        "length": 17,
-        "batch_size": 1
-      }
-    },
-    {
       "id": 20,
       "type": "LTXVSeparateAVLatent",
       "pos": [
@@ -348,7 +199,7 @@
         46
       ],
       "flags": {},
-      "order": 13,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -389,7 +240,7 @@
         46
       ],
       "flags": {},
-      "order": 14,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -428,7 +279,7 @@
         46
       ],
       "flags": {},
-      "order": 15,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -468,7 +319,7 @@
         58
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -498,140 +349,6 @@
       }
     },
     {
-      "id": 17,
-      "type": "VAELoader",
-      "pos": [
-        2390.7876993338164,
-        5582.629226743354
-      ],
-      "size": [
-        270,
-        58
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            21
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "VAELoader",
-        "models": [
-          {
-            "name": "ltx_2_3_22b_dev_video_vae.safetensors",
-            "url": "https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/vae/ltx-2.3-22b-dev_video_vae.safetensors",
-            "directory": "vae"
-          }
-        ]
-      },
-      "widgets_values": [
-        "ltx_2_3_22b_dev_video_vae.safetensors"
-      ],
-      "widgets_values_named": {
-        "vae_name": "ltx_2_3_22b_dev_video_vae.safetensors"
-      }
-    },
-    {
-      "id": 7,
-      "type": "CLIPTextEncode",
-      "pos": [
-        121.59825118566295,
-        5721.518295711494
-      ],
-      "size": [
-        400,
-        200
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 1
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            2,
-            4
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ],
-      "widgets_values_named": {
-        "text": ""
-      }
-    },
-    {
-      "id": 9,
-      "type": "LTXVConditioning",
-      "pos": [
-        823.6369086487742,
-        5720.645562320518
-      ],
-      "size": [
-        270,
-        78
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 2
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 5
-        }
-      ],
-      "outputs": [
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "links": [
-            11
-          ]
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "links": [
-            12
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LTXVConditioning"
-      },
-      "widgets_values": [
-        25
-      ],
-      "widgets_values_named": {
-        "frame_rate": 25
-      }
-    },
-    {
       "id": 6,
       "type": "CLIPLoader",
       "pos": [
@@ -643,7 +360,7 @@
         106
       ],
       "flags": {},
-      "order": 6,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -688,7 +405,7 @@
         102
       ],
       "flags": {},
-      "order": 16,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -736,7 +453,7 @@
         130
       ],
       "flags": {},
-      "order": 17,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -764,6 +481,368 @@
         "format": "mp4",
         "codec": "h264",
         "codec.encoding": "auto"
+      }
+    },
+    {
+      "id": 9,
+      "type": "LTXVConditioning",
+      "pos": [
+        823.6369086487742,
+        5720.645562320518
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 2
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            30
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            31
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LTXVConditioning"
+      },
+      "widgets_values": [
+        25
+      ],
+      "widgets_values_named": {
+        "frame_rate": 25
+      }
+    },
+    {
+      "id": 26,
+      "type": "LoadImage",
+      "pos": [
+        940.2737530193184,
+        6059.329234176646
+      ],
+      "size": [
+        282.798828125,
+        314
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            28
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "2026-54-21-15-ii__00001_.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "2026-54-21-15-ii__00001_.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 17,
+      "type": "VAELoader",
+      "pos": [
+        947.9246350654669,
+        5888.646712574257
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            21,
+            29
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ltx_2_3_22b_dev_video_vae.safetensors",
+            "url": "https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/vae/ltx-2.3-22b-dev_video_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "ltx_2_3_22b_dev_video_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "ltx_2_3_22b_dev_video_vae.safetensors"
+      }
+    },
+    {
+      "id": 13,
+      "type": "CFGGuider",
+      "pos": [
+        1748.419866306454,
+        5530.903034559259
+      ],
+      "size": [
+        270,
+        98
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 26
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 32
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 33
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CFGGuider"
+      },
+      "widgets_values": [
+        1
+      ],
+      "widgets_values_named": {
+        "cfg": 1
+      }
+    },
+    {
+      "id": 16,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        2112.182053980631,
+        5286.866056337226
+      ],
+      "size": [
+        212.3638671875,
+        106
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 16
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 17
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 15
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 14
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            19
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 25,
+      "type": "LTXVImgToVideo",
+      "pos": [
+        1410.0917485657437,
+        5715.869841004684
+      ],
+      "size": [
+        270,
+        214
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 30
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 31
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 29
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 28
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            32
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            33
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LTXVImgToVideo"
+      },
+      "widgets_values": [
+        512,
+        512,
+        17,
+        1,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 512,
+        "height": 512,
+        "length": 17,
+        "batch_size": 1,
+        "strength": 1
+      }
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        121.59825118566295,
+        5721.518295711494
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            2,
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "the cat eats the fish in the bowl slowly"
+      ],
+      "widgets_values_named": {
+        "text": "the cat eats the fish in the bowl slowly"
       }
     }
   ],
@@ -798,22 +877,6 @@
       0,
       9,
       1,
-      "CONDITIONING"
-    ],
-    [
-      11,
-      9,
-      0,
-      13,
-      1,
-      "CONDITIONING"
-    ],
-    [
-      12,
-      9,
-      1,
-      13,
-      2,
       "CONDITIONING"
     ],
     [
@@ -855,14 +918,6 @@
       16,
       1,
       "GUIDER"
-    ],
-    [
-      18,
-      8,
-      0,
-      16,
-      4,
-      "LATENT"
     ],
     [
       19,
@@ -935,16 +990,72 @@
       24,
       0,
       "VIDEO"
+    ],
+    [
+      28,
+      26,
+      0,
+      25,
+      3,
+      "IMAGE"
+    ],
+    [
+      29,
+      17,
+      0,
+      25,
+      2,
+      "VAE"
+    ],
+    [
+      30,
+      9,
+      0,
+      25,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      31,
+      9,
+      1,
+      25,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      32,
+      25,
+      0,
+      13,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      33,
+      25,
+      1,
+      13,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      34,
+      25,
+      2,
+      16,
+      4,
+      "LATENT"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.3063553965837343,
+      "scale": 0.2531862781683757,
       "offset": [
-        1055.7370882040086,
-        -3644.5613844827235
+        1948.5313029900744,
+        -3661.23861616326
       ]
     },
     "frontendVersion": "1.49.6"

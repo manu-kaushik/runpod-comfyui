@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-# LTX 2.3 — download models. Run from pod terminal. (Workflows pending.)
+# LTX 2.3 t2v — copy workflow + download models. Run from pod terminal.
 
 set -euo pipefail
 
 COMFYUI=/workspace/runpod-slim/ComfyUI
+REPO=/workspace/runpod-comfyui
 MODELS=$COMFYUI/models
+WF=$COMFYUI/user/default/workflows
 
 fetch() {
     local dest="$1" url="$2"
@@ -21,19 +23,21 @@ fetch() {
     echo "ok $dest"
 }
 
-fetch "$MODELS/checkpoints/ltx_2_3_22b_dev_q4_k_m.gguf" \
+
+mkdir -p "$WF"
+
+cp -f "$REPO/workflows/text_to_video_ltx_2_3_dev.json" "$WF/"
+
+fetch "$MODELS/diffusion_models/ltx_2_3_22b_dev_q4_k_m.gguf" \
     "https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/ltx-2.3-22b-dev-Q4_K_M.gguf"
-
-fetch "$MODELS/loras/ltx_2_3_22b_distilled_1_1_lora_dynamic_fro09_avg_rank_111_bf16.safetensors" \
-    "https://huggingface.co/Comfy-Org/ltx-2.3/resolve/main/split_files/loras/ltx_2.3_22b_distilled_1.1_lora_dynamic_fro09_avg_rank_111_bf16.safetensors"
-
-fetch "$MODELS/loras/gemma_3_12b_it_abliterated_lora_rank64_bf16.safetensors" \
-    "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/loras/gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors"
-
-fetch "$MODELS/latent_upscale_models/ltx_2_3_spatial_upscaler_x2_1_1.safetensors" \
-    "https://huggingface.co/Lightricks/LTX-2.3/resolve/main/ltx-2.3-spatial-upscaler-x2-1.1.safetensors"
 
 fetch "$MODELS/text_encoders/gemma_3_12b_it_fp4_mixed.safetensors" \
     "https://huggingface.co/Comfy-Org/ltx-2/resolve/main/split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors"
+
+fetch "$MODELS/vae/ltx_2_3_22b_dev_video_vae.safetensors" \
+    "https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/vae/ltx-2.3-22b-dev_video_vae.safetensors"
+
+fetch "$MODELS/checkpoints/ltx_2_3_22b_dev_audio_vae.safetensors" \
+    "https://huggingface.co/unsloth/LTX-2.3-GGUF/resolve/main/vae/ltx-2.3-22b-dev_audio_vae.safetensors"
 
 echo "Successfully setup LTX 2.3."

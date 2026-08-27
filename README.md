@@ -3,12 +3,12 @@
 Per-workflow shell scripts for comfyui runpod setup.
 
 ComfyUI: `/workspace/runpod-slim/ComfyUI`  
-Repo: `/workspace/runpod-comfyui`
+Repo: `/workspace/comfyui-packs`
 
 **(REQUIRED)** Install **ComfyUI-GGUF** and **Dev Mode** from the ComfyUI GUI.
 
 ```
-runpod-comfyui/
+comfyui-packs/
   scripts/
     krea.sh
     zimage.sh
@@ -22,8 +22,11 @@ runpod-comfyui/
 ## On the pod terminal
 
 ```bash
-git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/runpod-comfyui
-bash /workspace/runpod-comfyui/scripts/krea.sh
+git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/comfyui-packs
+bash /workspace/comfyui-packs/scripts/krea.sh
+
+# Remove cloned repo
+rm -rf /workspace/comfyui-packs
 ```
 
 Each script copies workflow JSON and curls models (skips existing files; resumes via `.part`).

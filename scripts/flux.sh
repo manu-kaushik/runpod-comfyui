@@ -5,7 +5,7 @@
 set -euo pipefail
 
 COMFYUI=/workspace/runpod-slim/ComfyUI
-REPO=/workspace/runpod-comfyui
+REPO=/workspace/comfyui-packs
 MODELS=$COMFYUI/models
 WF=$COMFYUI/user/default/workflows
 

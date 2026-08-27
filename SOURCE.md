@@ -36,18 +36,18 @@ Run pack scripts from terminal after ComfyUI is up. GGUF + Dev Mode in UI.
 
 | Task        | Command                                      |
 | ----------- | -------------------------------------------- |
-| Krea setup  | `bash /workspace/runpod-comfyui/scripts/krea.sh`     |
-| Z-Image     | `bash /workspace/runpod-comfyui/scripts/zimage.sh`   |
-| Flux i2i    | `bash /workspace/runpod-comfyui/scripts/flux.sh`     |
-| LTX t2v+i2v | `bash /workspace/runpod-comfyui/scripts/ltx.sh`      |
-| Clone repo  | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/runpod-comfyui` |
+| Krea setup  | `bash /workspace/comfyui-packs/scripts/krea.sh`     |
+| Z-Image     | `bash /workspace/comfyui-packs/scripts/zimage.sh`   |
+| Flux i2i    | `bash /workspace/comfyui-packs/scripts/flux.sh`     |
+| LTX t2v+i2v | `bash /workspace/comfyui-packs/scripts/ltx.sh`      |
+| Clone repo  | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/comfyui-packs` |
 
 ## Configuration
 
 Fixed paths (no env vars):
 
 - ComfyUI: `/workspace/runpod-slim/ComfyUI`
-- Repo: `/workspace/runpod-comfyui`
+- Repo: `/workspace/comfyui-packs`
 - Models: `$COMFYUI/models/<type>/`
 - Workflows dest: `$COMFYUI/user/default/workflows/`
 

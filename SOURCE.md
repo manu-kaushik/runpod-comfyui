@@ -24,7 +24,7 @@ Run pack scripts from terminal after ComfyUI is up. GGUF + Dev Mode in UI.
 
 ```
 /
-  scripts/         # krea.sh, zimage.sh, flux.sh, ltx.sh
+  scripts/         # krea.sh, zimage.sh, flux.sh, ltx.sh, minimax.sh, qwen.sh
   workflows/
   workflows/                             # JSON copied onto the pod
   README.md
@@ -40,6 +40,8 @@ Run pack scripts from terminal after ComfyUI is up. GGUF + Dev Mode in UI.
 | Z-Image     | `bash /workspace/comfyui-packs/scripts/zimage.sh`   |
 | Flux i2i    | `bash /workspace/comfyui-packs/scripts/flux.sh`     |
 | LTX t2v+i2v | `bash /workspace/comfyui-packs/scripts/ltx.sh`      |
+| MiniMax t2v+i2v | `bash /workspace/comfyui-packs/scripts/minimax.sh` |
+| Qwen i2i    | `bash /workspace/comfyui-packs/scripts/qwen.sh`       |
 | Clone repo  | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/comfyui-packs` |
 
 ## Configuration
@@ -65,7 +67,7 @@ ComfyUI-GGUF and Dev Mode: GUI only.
 - No `init.sh`, `models.txt`, or `packs.txt` — URLs live in each pack script.
 - Fixed runpod-slim paths; no `COMFYUI_PATH`.
 - New pack = new `*.sh`; delete unused scripts freely.
-- Pack roles: Krea/Z-Image t2i; Flux i2i; LTX video only (t2v + i2v).
+- Pack roles: Krea/Z-Image t2i; Flux i2i; LTX video (t2v + i2v); MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
 - Local model filenames: lowercase, underscore-separated (`krea2_turbo_q4_k_m.gguf`, not upstream `krea2_turbo-Q4_K_M.gguf`). Workflow JSON must match.
 
 ## Deferred

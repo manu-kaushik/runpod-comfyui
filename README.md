@@ -14,6 +14,8 @@ comfyui-packs/
     zimage.sh
     flux.sh
     ltx.sh
+    minimax.sh
+    qwen.sh
   workflows/
 ```
 
@@ -37,5 +39,7 @@ Each script copies workflow JSON and curls models (skips existing files; resumes
 | `zimage.sh` | t2i  | `text_to_image_z_image_turbo.json`                          |
 | `flux.sh`   | i2i  | `image_to_image_flux_1_kontext_dev.json`                    |
 | `ltx.sh`    | t2v, i2v | `text_to_video_ltx_2_3_dev.json`, `image_to_video_ltx_2_3_dev.json` |
+| `minimax.sh`| t2v, i2v | `text_to_video_minimax_h3.json`, `image_to_video_minimax_h3.json` |
+| `qwen.sh`   | i2i  | `image_to_image_qwen_image_edit_2511.json`                  |
 
 Run the pack script from the terminal after ComfyUI is up.

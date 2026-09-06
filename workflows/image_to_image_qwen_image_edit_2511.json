@@ -110,10 +110,10 @@
         "Node name for S&R": "UnetLoaderGGUF"
       },
       "widgets_values": [
-        "krea2_turbo_q4_k_m.gguf"
+        "qwen_image_edit_2511_q4_k_m.gguf"
       ],
       "widgets_values_named": {
-        "unet_name": "krea2_turbo_q4_k_m.gguf"
+        "unet_name": "qwen_image_edit_2511_q4_k_m.gguf"
       }
     },
     {
@@ -144,11 +144,11 @@
         "Node name for S&R": "CLIPLoaderGGUF"
       },
       "widgets_values": [
-        "Qwen2.5-VL-7B-Instruct-Q4_K_M.gguf",
+        "qwen2_5_vl_7b_instruct_q4_k_m.gguf",
         "qwen_image"
       ],
       "widgets_values_named": {
-        "clip_name": "Qwen2.5-VL-7B-Instruct-Q4_K_M.gguf",
+        "clip_name": "qwen2_5_vl_7b_instruct_q4_k_m.gguf",
         "type": "qwen_image"
       }
     },

@@ -647,10 +647,10 @@
         "Node name for S&R": "UnetLoaderGGUF"
       },
       "widgets_values": [
-        "minimax_h3_fl2va_pruned-Q4_K.gguf"
+        "minimax_h3_fl2va_pruned_q4_k.gguf"
       ],
       "widgets_values_named": {
-        "unet_name": "minimax_h3_fl2va_pruned-Q4_K.gguf"
+        "unet_name": "minimax_h3_fl2va_pruned_q4_k.gguf"
       }
     }
   ],

@@ -1,101 +1,28 @@
 {
-  "id": "58c1751e-1a32-45f8-b705-0de1ce96e946",
+  "id": "08988737-a544-4ab1-99fb-22d67b7c36e3",
   "revision": 0,
-  "last_node_id": 76,
-  "last_link_id": 97,
+  "last_node_id": 73,
+  "last_link_id": 125,
   "nodes": [
     {
-      "id": 76,
-      "type": "ee535ffc-4389-4f75-aff1-6f6cb6b03e2f",
-      "pos": [
-        1055.6051192199923,
-        1476.7604276344723
-      ],
-      "size": [
-        341.40613947984457,
-        529.8989682298768
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [
-        {
-          "label": "Prompt",
-          "name": "text",
-          "type": "STRING",
-          "widget": {
-            "name": "text"
-          },
-          "link": null
-        },
-        {
-          "label": "Negative Prompt",
-          "name": "text_1",
-          "type": "STRING",
-          "widget": {
-            "name": "text_1"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            90
-          ]
-        }
-      ],
-      "properties": {
-        "previewExposures": [
-          {
-            "name": "$$canvas-image-preview",
-            "sourceNodeId": "68",
-            "sourcePreviewName": "$$canvas-image-preview"
-          }
-        ]
-      },
-      "widgets_values": [
-        "",
-        "ugly, deformed, disfigured, malformed limbs, extra fingers, three legs, poorly drawn hands, poorly drawn face, fused fingers, blurry details, garish colors, grayish cast, cluttered background, crowded background, subtitles, text, motionless, static, worst quality, low quality, JPEG artifacts, incomplete",
-        512,
-        512,
-        1,
-        8,
-        0
-      ],
-      "widgets_values_named": {
-        "text": "",
-        "text_1": "ugly, deformed, disfigured, malformed limbs, extra fingers, three legs, poorly drawn hands, poorly drawn face, fused fingers, blurry details, garish colors, grayish cast, cluttered background, crowded background, subtitles, text, motionless, static, worst quality, low quality, JPEG artifacts, incomplete",
-        "width": 512,
-        "height": 512,
-        "batch_size": 1,
-        "steps": 8,
-        "seed": 0
-      },
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 72,
+      "id": 29,
       "type": "SaveImage",
       "pos": [
-        1542.830065656187,
-        1476.7604276344723
+        5360.98646264961,
+        -152.1962701486944
       ],
       "size": [
-        431.92627510096986,
-        464.98975535718864
+        880,
+        1020
       ],
       "flags": {},
-      "order": 1,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
           "name": "images",
           "type": "IMAGE",
-          "link": 90
+          "link": 111
         }
       ],
       "outputs": [
@@ -105,795 +32,517 @@
           "links": null
         }
       ],
-      "properties": {},
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
       "widgets_values": [
-        "%date:yyyy-MM-dd%/%date:hhmmss%"
+        "Krea2_turbo"
       ],
       "widgets_values_named": {
-        "filename_prefix": "%date:yyyy-MM-dd%/%date:hhmmss%"
+        "filename_prefix": "Krea2_turbo"
+      }
+    },
+    {
+      "id": 54,
+      "type": "VAEDecode",
+      "pos": [
+        4967.560658593682,
+        -152.5264402751672
+      ],
+      "size": [
+        230,
+        100
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 92
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            111
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      }
+    },
+    {
+      "id": 53,
+      "type": "KSampler",
+      "pos": [
+        4259.089783543691,
+        -480.7025418362788
+      ],
+      "size": [
+        320,
+        590
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 120
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 89
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 90
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            92
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        294682518664063,
+        "randomize",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 294682518664063,
+        "control_after_generate": "randomize",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 57,
+      "type": "VAELoader",
+      "pos": [
+        4297.7808877869775,
+        314.8156804364336
+      ],
+      "size": [
+        450,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            93
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "models": [
+          {
+            "name": "qwen_image_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "qwen_image_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_vae.safetensors"
+      }
+    },
+    {
+      "id": 51,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2988.3849814909127,
+        -63.64220324183748
+      ],
+      "size": [
+        480,
+        420
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 125
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            89,
+            94
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        "A minimal dark-themed, sleek dark charcoal and deep obsidian background, subtle abstract geometric lines glowing with a dim neon blue hue, clean composition, soft ambient lighting"
+      ],
+      "widgets_values_named": {
+        "text": "A minimal dark-themed, sleek dark charcoal and deep obsidian background, subtle abstract geometric lines glowing with a dim neon blue hue, clean composition, soft ambient lighting"
       },
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 58,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        3780.709301191388,
+        -82.56795221306601
+      ],
+      "size": [
+        225,
+        26
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 94
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            90
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningZeroOut",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      }
+    },
+    {
+      "id": 59,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3607.6772397218847,
+        -718.5597757405402
+      ],
+      "size": [
+        450,
+        170
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 121
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            120
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "models": [
+          {
+            "name": "krea2_darkbrush.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/loras/krea2_darkbrush.safetensors",
+            "directory": "loras"
+          }
+        ]
+      },
+      "widgets_values": [
+        "krea2_realism_v2.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "krea2_realism_v2.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 71,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        3220.6748522831267,
+        -714.5188759391698
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            121
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnetLoaderGGUF"
+      },
+      "widgets_values": [
+        "krea2_turbo_q4_k_m.gguf"
+      ],
+      "widgets_values_named": {
+        "unet_name": "krea2_turbo_q4_k_m.gguf"
+      }
+    },
+    {
+      "id": 73,
+      "type": "CLIPLoader",
+      "pos": [
+        2626.966557970602,
+        -58.899097842501085
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            125
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_4b_fp8_scaled.safetensors",
+        "krea2",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
+        "type": "krea2",
+        "device": "default"
+      }
+    },
+    {
+      "id": 52,
+      "type": "EmptyLatentImage",
+      "pos": [
+        3764.1999413966896,
+        148.83920874260744
+      ],
+      "size": [
+        320,
+        170
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            91
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        720,
+        1080,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 720,
+        "height": 1080,
+        "batch_size": 1
+      }
     }
   ],
   "links": [
     [
-      90,
-      76,
+      89,
+      51,
       0,
-      72,
+      53,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      90,
+      58,
+      0,
+      53,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      91,
+      52,
+      0,
+      53,
+      3,
+      "LATENT"
+    ],
+    [
+      92,
+      53,
+      0,
+      54,
+      0,
+      "LATENT"
+    ],
+    [
+      93,
+      57,
+      0,
+      54,
+      1,
+      "VAE"
+    ],
+    [
+      94,
+      51,
+      0,
+      58,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      111,
+      54,
+      0,
+      29,
       0,
       "IMAGE"
+    ],
+    [
+      120,
+      59,
+      0,
+      53,
+      0,
+      "MODEL"
+    ],
+    [
+      121,
+      71,
+      0,
+      59,
+      0,
+      "MODEL"
+    ],
+    [
+      125,
+      73,
+      0,
+      51,
+      0,
+      "CLIP"
     ]
   ],
   "groups": [],
-  "definitions": {
-    "subgraphs": [
-      {
-        "id": "ee535ffc-4389-4f75-aff1-6f6cb6b03e2f",
-        "version": 1,
-        "state": {
-          "lastGroupId": 0,
-          "lastNodeId": 76,
-          "lastLinkId": 97,
-          "lastRerouteId": 0
-        },
-        "revision": 0,
-        "config": {},
-        "name": "Krea 2 Turbo",
-        "inputNode": {
-          "id": -10,
-          "bounding": [
-            -601.4805567672433,
-            1671.5425448767494,
-            128,
-            48
-          ]
-        },
-        "outputNode": {
-          "id": -20,
-          "bounding": [
-            1322.054220825461,
-            1661.5425448767494,
-            128,
-            68
-          ]
-        },
-        "inputs": [
-          {
-            "id": "76da8bfc-efe3-400c-9bd3-0feb32b8eb8e",
-            "name": "text",
-            "type": "STRING",
-            "linkIds": [
-              91
-            ],
-            "pos": [
-              0,
-              0
-            ]
-          },
-          {
-            "id": "ea83f5e6-eb34-4e39-bd45-f4294363c0a3",
-            "name": "text_1",
-            "type": "STRING",
-            "linkIds": [
-              92
-            ],
-            "pos": [
-              0,
-              0
-            ]
-          },
-          {
-            "id": "cea27e23-8774-45f6-8190-131aacc80aa6",
-            "name": "width",
-            "type": "INT",
-            "linkIds": [
-              94
-            ],
-            "pos": [
-              0,
-              0
-            ]
-          },
-          {
-            "id": "8523f86f-39ab-4946-bf9e-f5b06e281586",
-            "name": "height",
-            "type": "INT",
-            "linkIds": [
-              95
-            ],
-            "pos": [
-              0,
-              0
-            ]
-          },
-          {
-            "id": "e28573d3-2139-4aec-81a3-fb47bc9d5bb3",
-            "name": "batch_size",
-            "type": "INT",
-            "linkIds": [
-              96
-            ],
-            "pos": [
-              0,
-              0
-            ]
-          },
-          {
-            "id": "c0111bc6-2dce-4222-a429-6fa29f0f6eb3",
-            "name": "steps",
-            "type": "INT",
-            "linkIds": [
-              97
-            ],
-            "pos": [
-              0,
-              0
-            ]
-          },
-          {
-            "id": "49567574-35a9-4d2f-91e7-9ab24e087cf5",
-            "name": "seed",
-            "type": "INT",
-            "linkIds": [
-              93
-            ],
-            "pos": [
-              0,
-              0
-            ]
-          }
-        ],
-        "outputs": [
-          {
-            "id": "5d8e7490-ff4b-4cc4-8419-647229d0a750",
-            "name": "IMAGE",
-            "type": "IMAGE",
-            "linkIds": [
-              82
-            ],
-            "localized_name": "IMAGE",
-            "pos": [
-              24,
-              24
-            ]
-          }
-        ],
-        "widgets": [],
-        "nodes": [
-          {
-            "id": 65,
-            "type": "UnetLoaderGGUF",
-            "pos": [
-              -413.48055676724334,
-              1259.8133809015008
-            ],
-            "size": [
-              270,
-              58
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-              {
-                "localized_name": "MODEL",
-                "name": "MODEL",
-                "type": "MODEL",
-                "links": [
-                  88
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "UnetLoaderGGUF"
-            },
-            "widgets_values": [
-              "krea2_turbo_q4_k_m.gguf"
-            ],
-            "widgets_values_named": {
-              "unet_name": "krea2_turbo_q4_k_m.gguf"
-            }
-          },
-          {
-            "id": 66,
-            "type": "CLIPLoader",
-            "pos": [
-              -237.24674416706907,
-              1487.3673515661417
-            ],
-            "size": [
-              270,
-              106
-            ],
-            "flags": {},
-            "order": 1,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-              {
-                "localized_name": "CLIP",
-                "name": "CLIP",
-                "type": "CLIP",
-                "links": [
-                  78,
-                  85
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "CLIPLoader",
-              "models": [
-                {
-                  "name": "qwen3vl_4b_fp8_scaled.safetensors",
-                  "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/text_encoders/qwen3vl_4b_fp8_scaled.safetensors",
-                  "directory": "text_encoders"
-                }
-              ]
-            },
-            "widgets_values": [
-              "qwen3vl_4b_fp8_scaled.safetensors",
-              "krea2",
-              "default"
-            ],
-            "widgets_values_named": {
-              "clip_name": "qwen3vl_4b_fp8_scaled.safetensors",
-              "type": "krea2",
-              "device": "default"
-            }
-          },
-          {
-            "id": 67,
-            "type": "CLIPTextEncode",
-            "pos": [
-              100.02263097900332,
-              1491.8866614573603
-            ],
-            "size": [
-              400,
-              200
-            ],
-            "flags": {},
-            "order": 4,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "clip",
-                "name": "clip",
-                "type": "CLIP",
-                "link": 78
-              },
-              {
-                "localized_name": "text",
-                "name": "text",
-                "type": "STRING",
-                "widget": {
-                  "name": "text"
-                },
-                "link": 91
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "CONDITIONING",
-                "name": "CONDITIONING",
-                "type": "CONDITIONING",
-                "links": [
-                  79
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "CLIPTextEncode"
-            },
-            "widgets_values": [
-              ""
-            ],
-            "widgets_values_named": {
-              "text": ""
-            }
-          },
-          {
-            "id": 74,
-            "type": "CLIPTextEncode",
-            "pos": [
-              107.72064575958629,
-              1757.8040228825305
-            ],
-            "size": [
-              400,
-              200
-            ],
-            "flags": {},
-            "order": 8,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "clip",
-                "name": "clip",
-                "type": "CLIP",
-                "link": 85
-              },
-              {
-                "localized_name": "text",
-                "name": "text",
-                "type": "STRING",
-                "widget": {
-                  "name": "text"
-                },
-                "link": 92
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "CONDITIONING",
-                "name": "CONDITIONING",
-                "type": "CONDITIONING",
-                "links": [
-                  86
-                ]
-              }
-            ],
-            "title": "CLIP Text Encode (Negative Prompt)",
-            "properties": {
-              "Node name for S&R": "CLIPTextEncode"
-            },
-            "widgets_values": [
-              "ugly, deformed, disfigured, malformed limbs, extra fingers, three legs, poorly drawn hands, poorly drawn face, fused fingers, blurry details, garish colors, grayish cast, cluttered background, crowded background, subtitles, text, motionless, static, worst quality, low quality, JPEG artifacts, incomplete"
-            ],
-            "widgets_values_named": {
-              "text": "ugly, deformed, disfigured, malformed limbs, extra fingers, three legs, poorly drawn hands, poorly drawn face, fused fingers, blurry details, garish colors, grayish cast, cluttered background, crowded background, subtitles, text, motionless, static, worst quality, low quality, JPEG artifacts, incomplete"
-            }
-          },
-          {
-            "id": 75,
-            "type": "LoraLoaderModelOnly",
-            "pos": [
-              305.2734119484581,
-              1260.9931030695225
-            ],
-            "size": [
-              270,
-              82
-            ],
-            "flags": {},
-            "order": 3,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "model",
-                "name": "model",
-                "type": "MODEL",
-                "link": 88
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "MODEL",
-                "name": "MODEL",
-                "type": "MODEL",
-                "links": [
-                  89
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "LoraLoaderModelOnly",
-              "models": [
-                {
-                  "name": "krea2_realism_v2.safetensors",
-                  "url": "https://huggingface.co/RudySen/Krea2-realism-V2/resolve/main/Krea2-realism-V2.safetensors",
-                  "directory": "loras"
-                }
-              ]
-            },
-            "widgets_values": [
-              "krea2_realism_v2.safetensors",
-              1
-            ],
-            "widgets_values_named": {
-              "lora_name": "krea2_realism_v2.safetensors",
-              "strength_model": 1
-            }
-          },
-          {
-            "id": 69,
-            "type": "EmptySD3LatentImage",
-            "pos": [
-              219.51019877961875,
-              2055.271708851998
-            ],
-            "size": [
-              270,
-              106
-            ],
-            "flags": {},
-            "order": 6,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "width",
-                "name": "width",
-                "type": "INT",
-                "widget": {
-                  "name": "width"
-                },
-                "link": 94
-              },
-              {
-                "localized_name": "height",
-                "name": "height",
-                "type": "INT",
-                "widget": {
-                  "name": "height"
-                },
-                "link": 95
-              },
-              {
-                "localized_name": "batch_size",
-                "name": "batch_size",
-                "type": "INT",
-                "widget": {
-                  "name": "batch_size"
-                },
-                "link": 96
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "LATENT",
-                "name": "LATENT",
-                "type": "LATENT",
-                "links": [
-                  77
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "EmptySD3LatentImage"
-            },
-            "widgets_values": [
-              512,
-              512,
-              1
-            ],
-            "widgets_values_named": {
-              "width": 512,
-              "height": 512,
-              "batch_size": 1
-            }
-          },
-          {
-            "id": 70,
-            "type": "VAELoader",
-            "pos": [
-              717.267534831907,
-              1832.8845558639114
-            ],
-            "size": [
-              270,
-              58
-            ],
-            "flags": {},
-            "order": 2,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-              {
-                "localized_name": "VAE",
-                "name": "VAE",
-                "type": "VAE",
-                "links": [
-                  81
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "VAELoader",
-              "models": [
-                {
-                  "name": "qwen_image_vae.safetensors",
-                  "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/vae/qwen_image_vae.safetensors",
-                  "directory": "vae"
-                }
-              ]
-            },
-            "widgets_values": [
-              "qwen_image_vae.safetensors"
-            ],
-            "widgets_values_named": {
-              "vae_name": "qwen_image_vae.safetensors"
-            }
-          },
-          {
-            "id": 68,
-            "type": "KSampler",
-            "pos": [
-              718.0222082931493,
-              1482.43002941964
-            ],
-            "size": [
-              270,
-              262
-            ],
-            "flags": {},
-            "order": 5,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "model",
-                "name": "model",
-                "type": "MODEL",
-                "link": 89
-              },
-              {
-                "localized_name": "positive",
-                "name": "positive",
-                "type": "CONDITIONING",
-                "link": 79
-              },
-              {
-                "localized_name": "negative",
-                "name": "negative",
-                "type": "CONDITIONING",
-                "link": 86
-              },
-              {
-                "localized_name": "latent_image",
-                "name": "latent_image",
-                "type": "LATENT",
-                "link": 77
-              },
-              {
-                "localized_name": "seed",
-                "name": "seed",
-                "type": "INT",
-                "widget": {
-                  "name": "seed"
-                },
-                "link": 93
-              },
-              {
-                "localized_name": "steps",
-                "name": "steps",
-                "type": "INT",
-                "widget": {
-                  "name": "steps"
-                },
-                "link": 97
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "LATENT",
-                "name": "LATENT",
-                "type": "LATENT",
-                "links": [
-                  80
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "KSampler"
-            },
-            "widgets_values": [
-              0,
-              "randomize",
-              8,
-              1,
-              "euler",
-              "simple",
-              1
-            ],
-            "widgets_values_named": {
-              "seed": 0,
-              "control_after_generate": "randomize",
-              "steps": 8,
-              "cfg": 1,
-              "sampler_name": "euler",
-              "scheduler": "simple",
-              "denoise": 1
-            }
-          },
-          {
-            "id": 71,
-            "type": "VAEDecode",
-            "pos": [
-              1122.054220825461,
-              1484.1458921631936
-            ],
-            "size": [
-              140,
-              46
-            ],
-            "flags": {},
-            "order": 7,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "samples",
-                "name": "samples",
-                "type": "LATENT",
-                "link": 80
-              },
-              {
-                "localized_name": "vae",
-                "name": "vae",
-                "type": "VAE",
-                "link": 81
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "IMAGE",
-                "name": "IMAGE",
-                "type": "IMAGE",
-                "links": [
-                  82
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "VAEDecode"
-            }
-          }
-        ],
-        "groups": [],
-        "links": [
-          {
-            "id": 78,
-            "origin_id": 66,
-            "origin_slot": 0,
-            "target_id": 67,
-            "target_slot": 0,
-            "type": "CLIP"
-          },
-          {
-            "id": 85,
-            "origin_id": 66,
-            "origin_slot": 0,
-            "target_id": 74,
-            "target_slot": 0,
-            "type": "CLIP"
-          },
-          {
-            "id": 88,
-            "origin_id": 65,
-            "origin_slot": 0,
-            "target_id": 75,
-            "target_slot": 0,
-            "type": "MODEL"
-          },
-          {
-            "id": 89,
-            "origin_id": 75,
-            "origin_slot": 0,
-            "target_id": 68,
-            "target_slot": 0,
-            "type": "MODEL"
-          },
-          {
-            "id": 79,
-            "origin_id": 67,
-            "origin_slot": 0,
-            "target_id": 68,
-            "target_slot": 1,
-            "type": "CONDITIONING"
-          },
-          {
-            "id": 86,
-            "origin_id": 74,
-            "origin_slot": 0,
-            "target_id": 68,
-            "target_slot": 2,
-            "type": "CONDITIONING"
-          },
-          {
-            "id": 77,
-            "origin_id": 69,
-            "origin_slot": 0,
-            "target_id": 68,
-            "target_slot": 3,
-            "type": "LATENT"
-          },
-          {
-            "id": 80,
-            "origin_id": 68,
-            "origin_slot": 0,
-            "target_id": 71,
-            "target_slot": 0,
-            "type": "LATENT"
-          },
-          {
-            "id": 81,
-            "origin_id": 70,
-            "origin_slot": 0,
-            "target_id": 71,
-            "target_slot": 1,
-            "type": "VAE"
-          },
-          {
-            "id": 82,
-            "origin_id": 71,
-            "origin_slot": 0,
-            "target_id": -20,
-            "target_slot": 0,
-            "type": "IMAGE"
-          },
-          {
-            "id": 91,
-            "origin_id": -10,
-            "origin_slot": 0,
-            "target_id": 67,
-            "target_slot": 1,
-            "type": "STRING"
-          },
-          {
-            "id": 92,
-            "origin_id": -10,
-            "origin_slot": 1,
-            "target_id": 74,
-            "target_slot": 1,
-            "type": "STRING"
-          },
-          {
-            "id": 93,
-            "origin_id": -10,
-            "origin_slot": 6,
-            "target_id": 68,
-            "target_slot": 4,
-            "type": "INT"
-          },
-          {
-            "id": 94,
-            "origin_id": -10,
-            "origin_slot": 2,
-            "target_id": 69,
-            "target_slot": 0,
-            "type": "INT"
-          },
-          {
-            "id": 95,
-            "origin_id": -10,
-            "origin_slot": 3,
-            "target_id": 69,
-            "target_slot": 1,
-            "type": "INT"
-          },
-          {
-            "id": 96,
-            "origin_id": -10,
-            "origin_slot": 4,
-            "target_id": 69,
-            "target_slot": 2,
-            "type": "INT"
-          },
-          {
-            "id": 97,
-            "origin_id": -10,
-            "origin_slot": 5,
-            "target_id": 68,
-            "target_slot": 5,
-            "type": "INT"
-          }
-        ],
-        "extra": {}
-      }
-    ]
-  },
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8056479400479162,
+      "scale": 1.5462649465220368,
       "offset": [
-        -389.9571928315802,
-        -1135.654902225754
+        -3556.233873653032,
+        94.43066544231948
       ]
     },
     "frontendVersion": "1.49.6",
-    "workflowRendererVersion": "LG",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

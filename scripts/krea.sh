@@ -10,28 +10,11 @@ for arg in "$@"; do
     [[ "$arg" == --skip-diff ]] && SKIP_DIFFUSION_MODEL=true
 done
 
-COMFYUI=/workspace/runpod-slim/ComfyUI
-REPO=/workspace/comfyui-packs
-MODELS=$COMFYUI/models
-WF=$COMFYUI/user/default/workflows
-
-fetch() {
-    local dest="$1" url="$2"
-
-    if [[ -f "$dest" && -s "$dest" ]]; then
-        echo "skip $dest"
-        return 0
-    fi
-
-    mkdir -p "$(dirname "$dest")"
-    curl -fL --retry 3 --retry-delay 2 --continue-at - -o "${dest}.part" "$url"
-    mv -f "${dest}.part" "$dest"
-    echo "ok $dest"
-}
+source "$(dirname "$0")/common.sh"
 
 mkdir -p "$WF"
 
-cp -f "$REPO/workflows/text_to_image_krea_2_turbo.json" "$WF/"
+cp -f "$WF_SRC/text_to_image_krea_2_turbo.json" "$WF/"
 
 if [[ "$SKIP_DIFFUSION_MODEL" != true ]]; then
     fetch "$MODELS/diffusion_models/krea2_turbo_q4_k_m.gguf" \

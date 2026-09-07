@@ -6,27 +6,27 @@ Persistent project record for this repository — not chat history, not summarie
 
 ## Overview
 
-RunPod runpod-slim: per-pack `*.sh` scripts copy workflow JSON and curl models into fixed paths. Repository: https://github.com/manu-kaushik/runpod-comfyui
+RunPod: `install-comfyui.sh` on a PyTorch pod, then per-pack `*.sh` scripts copy workflow JSON and curl models. Repository: https://github.com/manu-kaushik/runpod-comfyui
 
 ## Current focus
 
-Run pack scripts from terminal after ComfyUI is up. GGUF + Dev Mode in UI.
+Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run install once, then pack scripts.
 
 ## Stack
 
 | Layer     | Choice     | Notes                                      |
 | --------- | ---------- | ------------------------------------------ |
-| Language  | Bash       | Per-pack `*.sh` scripts                    |
-| Framework | ComfyUI    | `/workspace/runpod-slim/ComfyUI`           |
-| Hosting   | RunPod     | runpod-slim ComfyUI template; volume `/workspace` |
+| Language  | Bash       | install + per-pack `*.sh` scripts          |
+| Framework | ComfyUI    | `/workspace/comfyui`                       |
+| Hosting   | RunPod     | PyTorch template; volume `/workspace`      |
 
 ## Repository layout
 
 ```
 /
-  scripts/         # krea.sh, zimage.sh, flux.sh, ltx.sh, minimax.sh, qwen.sh
+  config/          # extra_model_paths.yaml → ComfyUI
+  scripts/         # install-comfyui.sh, start-comfyui.sh, common.sh, krea.sh, …
   workflows/
-  workflows/                             # JSON copied onto the pod
   README.md
   SOURCE.md
   AGENTS.md
@@ -34,42 +34,59 @@ Run pack scripts from terminal after ComfyUI is up. GGUF + Dev Mode in UI.
 
 ## Commands
 
-| Task        | Command                                      |
-| ----------- | -------------------------------------------- |
-| Krea setup  | `bash /workspace/comfyui-packs/scripts/krea.sh`     |
-| Z-Image     | `bash /workspace/comfyui-packs/scripts/zimage.sh`   |
-| Flux i2i    | `bash /workspace/comfyui-packs/scripts/flux.sh`     |
-| LTX t2v+i2v | `bash /workspace/comfyui-packs/scripts/ltx.sh`      |
-| MiniMax t2v+i2v | `bash /workspace/comfyui-packs/scripts/minimax.sh` |
-| Qwen i2i    | `bash /workspace/comfyui-packs/scripts/qwen.sh`       |
-| Clone repo  | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/comfyui-packs` |
+| Task           | Command                                              |
+| -------------- | ---------------------------------------------------- |
+| Install ComfyUI| `bash /workspace/comfyui-packs/scripts/install-comfyui.sh` |
+| Start ComfyUI  | `bash /workspace/comfyui-packs/scripts/start-comfyui.sh` |
+| Krea setup     | `bash /workspace/comfyui-packs/scripts/krea.sh`     |
+| Z-Image        | `bash /workspace/comfyui-packs/scripts/zimage.sh`   |
+| Flux i2i       | `bash /workspace/comfyui-packs/scripts/flux.sh`     |
+| LTX t2v+i2v    | `bash /workspace/comfyui-packs/scripts/ltx.sh`      |
+| MiniMax t2v+i2v| `bash /workspace/comfyui-packs/scripts/minimax.sh` |
+| Qwen i2i       | `bash /workspace/comfyui-packs/scripts/qwen.sh`       |
+| Clone repo     | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/comfyui-packs` |
 
 ## Configuration
 
 Fixed paths (no env vars):
 
-- ComfyUI: `/workspace/runpod-slim/ComfyUI`
+- ComfyUI: `/workspace/comfyui`
 - Repo: `/workspace/comfyui-packs`
-- Models: `$COMFYUI/models/<type>/`
+- Models: `/workspace/models/<type>/` (ComfyUI via `extra_model_paths.yaml`, `is_default: true`)
+- Input: `/workspace/input/` (ComfyUI `--input-directory`)
+- Output: `/workspace/output/` (ComfyUI `--output-directory`)
 - Workflows dest: `$COMFYUI/user/default/workflows/`
+
+RunPod PyTorch image (4090-class): `runpod/pytorch:1.0.2-cu1281-torch271-ubuntu2404`
 
 ## Architecture
 
-Each `*.sh`:
+`install-comfyui.sh` (once per pod):
 
-1. `cp` workflow JSON from `workflows/`
-2. `fetch dest url` — skip if dest exists; else curl with resume to `.part`, then `mv`
+1. Clone pinned ComfyUI tag into `/workspace/comfyui`
+2. venv; `pip install -r requirements.txt` excluding torch (keep base image CUDA torch)
+3. Clone ComfyUI-GGUF + ComfyUI-Manager
+4. Install `config/extra_model_paths.yaml` → `$COMFYUI/extra_model_paths.yaml`
+5. Write `comfyui_args.txt` (listen 8188, input/output paths)
 
-ComfyUI-GGUF and Dev Mode: GUI only.
+Each pack `*.sh`:
+
+1. `cp` workflow JSON from `$REPO/workflows/` → ComfyUI user folder
+2. `fetch dest url` into `/workspace/models/`
+
+Dev Mode: enabled in `user/default/comfy.settings.json` by `install-comfyui.sh`.
 
 ## Decisions
 
-- No `init.sh`, `models.txt`, or `packs.txt` — URLs live in each pack script.
-- Fixed runpod-slim paths; no `COMFYUI_PATH`.
+- Custom ComfyUI on PyTorch pod instead of official RunPod ComfyUI template (pinned old core).
+- Models live on `/workspace/models/`; ComfyUI reads them via `extra_model_paths.yaml` — no symlinks.
+- Input/output via ComfyUI CLI args, not symlinks.
+- `COMFYUI_REF` env overrides default tag (`v0.3.66`).
+- No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `*.sh`; delete unused scripts freely.
 - Pack roles: Krea/Z-Image t2i; Flux i2i; LTX video (t2v + i2v); MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
-- Local model filenames: lowercase, underscore-separated (`krea2_turbo_q4_k_m.gguf`, not upstream `krea2_turbo-Q4_K_M.gguf`). Workflow JSON must match.
+- Local model filenames: lowercase, underscore-separated. Workflow JSON must match.
 
 ## Deferred
 
-- Confirm pack scripts on pod (start with `krea.sh`): models, workflow, GGUF (GUI).
+- Confirm install + pack scripts on PyTorch pod: torch, ComfyUI start, GGUF, Dev Mode, one workflow per pack.

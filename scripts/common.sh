@@ -1,7 +1,7 @@
 # Shared paths and fetch helper for pack scripts. Source from scripts/*.sh.
 
 COMFYUI=/workspace/comfyui
-REPO=/workspace/comfyui-packs
+REPO=/workspace/custom-setup
 MODELS=/workspace/models
 WF=$COMFYUI/user/default/workflows
 

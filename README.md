@@ -6,13 +6,13 @@ ComfyUI: `/workspace/comfyui`
 
 Models: `/workspace/models/`
 
-Repo: `/workspace/comfyui-packs`
+Repo: `/workspace/custom-setup`
 
 Use a **RunPod PyTorch** pod (e.g. `runpod/pytorch:1.0.2-cu1281-torch271-ubuntu2404`), expose port **8188**, then run `install-comfyui.sh` once (Dev Mode is enabled automatically).
 
 ```
 
-comfyui-packs/
+custom-setup/
 
   config/extra_model_paths.yaml
 
@@ -43,12 +43,12 @@ comfyui-packs/
 
 ```bash
 
-git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/comfyui-packs
+git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup
 
-bash /workspace/comfyui-packs/scripts/install-comfyui.sh
-bash /workspace/comfyui-packs/scripts/start-comfyui.sh
+bash /workspace/custom-setup/scripts/install-comfyui.sh
+bash /workspace/custom-setup/scripts/start-comfyui.sh
 
-bash /workspace/comfyui-packs/scripts/krea.sh
+bash /workspace/custom-setup/scripts/krea.sh
 
 ```
 
@@ -75,4 +75,4 @@ Each pack script copies workflow JSON into ComfyUI's user folder and curls model
 
 | `qwen.sh` | i2i | `image_to_image_qwen_image_edit_2511.json` |
 
-Override ComfyUI version: `COMFYUI_REF=v0.3.66 bash /workspace/comfyui-packs/scripts/install-comfyui.sh`
+Override ComfyUI version: `COMFYUI_REF=v0.34.0 bash /workspace/custom-setup/scripts/install-comfyui.sh`

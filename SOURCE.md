@@ -36,22 +36,22 @@ Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run instal
 
 | Task           | Command                                              |
 | -------------- | ---------------------------------------------------- |
-| Install ComfyUI| `bash /workspace/comfyui-packs/scripts/install-comfyui.sh` |
-| Start ComfyUI  | `bash /workspace/comfyui-packs/scripts/start-comfyui.sh` |
-| Krea setup     | `bash /workspace/comfyui-packs/scripts/krea.sh`     |
-| Z-Image        | `bash /workspace/comfyui-packs/scripts/zimage.sh`   |
-| Flux i2i       | `bash /workspace/comfyui-packs/scripts/flux.sh`     |
-| LTX t2v+i2v    | `bash /workspace/comfyui-packs/scripts/ltx.sh`      |
-| MiniMax t2v+i2v| `bash /workspace/comfyui-packs/scripts/minimax.sh` |
-| Qwen i2i       | `bash /workspace/comfyui-packs/scripts/qwen.sh`       |
-| Clone repo     | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/comfyui-packs` |
+| Install ComfyUI| `bash /workspace/custom-setup/scripts/install-comfyui.sh` |
+| Start ComfyUI  | `bash /workspace/custom-setup/scripts/start-comfyui.sh` |
+| Krea setup     | `bash /workspace/custom-setup/scripts/krea.sh`     |
+| Z-Image        | `bash /workspace/custom-setup/scripts/zimage.sh`   |
+| Flux i2i       | `bash /workspace/custom-setup/scripts/flux.sh`     |
+| LTX t2v+i2v    | `bash /workspace/custom-setup/scripts/ltx.sh`      |
+| MiniMax t2v+i2v| `bash /workspace/custom-setup/scripts/minimax.sh` |
+| Qwen i2i       | `bash /workspace/custom-setup/scripts/qwen.sh`       |
+| Clone repo     | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup` |
 
 ## Configuration
 
 Fixed paths (no env vars):
 
 - ComfyUI: `/workspace/comfyui`
-- Repo: `/workspace/comfyui-packs`
+- Repo: `/workspace/custom-setup`
 - Models: `/workspace/models/<type>/` (ComfyUI via `extra_model_paths.yaml`, `is_default: true`)
 - Input: `/workspace/input/` (ComfyUI `--input-directory`)
 - Output: `/workspace/output/` (ComfyUI `--output-directory`)
@@ -81,7 +81,7 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `install-comfyui.sh`.
 - Custom ComfyUI on PyTorch pod instead of official RunPod ComfyUI template (pinned old core).
 - Models live on `/workspace/models/`; ComfyUI reads them via `extra_model_paths.yaml` — no symlinks.
 - Input/output via ComfyUI CLI args, not symlinks.
-- `COMFYUI_REF` env overrides default tag (`v0.3.66`).
+- `COMFYUI_REF` env overrides default tag (`v0.34.0`).
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `*.sh`; delete unused scripts freely.
 - Pack roles: Krea/Z-Image t2i; Flux i2i; LTX video (t2v + i2v); MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.

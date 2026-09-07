@@ -1,9 +1,0 @@
-runpod:
-  base_path: /workspace
-  is_default: true
-  checkpoints: models/checkpoints
-  diffusion_models: models/diffusion_models
-  text_encoders: models/text_encoders
-  vae: models/vae
-  loras: models/loras
-  clip: models/clip

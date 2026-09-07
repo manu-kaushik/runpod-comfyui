@@ -1,8 +1,8 @@
 {
   "id": "e3f2b845-8f2c-4b5a-9caf-eac1029d3e7e",
   "revision": 0,
-  "last_node_id": 162,
-  "last_link_id": 283,
+  "last_node_id": 164,
+  "last_link_id": 285,
   "nodes": [
     {
       "id": 150,
@@ -107,7 +107,7 @@
         550
       ],
       "flags": {},
-      "order": 6,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -131,6 +131,14 @@
           "shape": 7,
           "type": "IMAGE",
           "link": null
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 285
         }
       ],
       "outputs": [
@@ -181,7 +189,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 10,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -224,7 +232,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 11,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -265,7 +273,7 @@
         140
       ],
       "flags": {},
-      "order": 12,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -317,7 +325,7 @@
         106
       ],
       "flags": {},
-      "order": 13,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -400,7 +408,7 @@
         390
       ],
       "flags": {},
-      "order": 9,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -462,7 +470,7 @@
         80
       ],
       "flags": {},
-      "order": 8,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -489,52 +497,6 @@
         "Node name for S&R": "BasicGuider",
         "cnr_id": "comfy-core",
         "ver": "0.33.0"
-      }
-    },
-    {
-      "id": 146,
-      "type": "BasicScheduler",
-      "pos": [
-        -588.884503705182,
-        5158.401190116184
-      ],
-      "size": [
-        370,
-        150
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 283
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SIGMAS",
-          "type": "SIGMAS",
-          "links": [
-            254
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "BasicScheduler",
-        "cnr_id": "comfy-core",
-        "ver": "0.33.0"
-      },
-      "widgets_values": [
-        "simple",
-        6,
-        1
-      ],
-      "widgets_values_named": {
-        "scheduler": "simple",
-        "steps": 6,
-        "denoise": 1
       }
     },
     {
@@ -651,6 +613,151 @@
       ],
       "widgets_values_named": {
         "unet_name": "minimax_h3_fl2va_pruned_q4_k.gguf"
+      }
+    },
+    {
+      "id": 146,
+      "type": "BasicScheduler",
+      "pos": [
+        -588.884503705182,
+        5158.401190116184
+      ],
+      "size": [
+        370,
+        150
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 283
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            254
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1
+      ],
+      "widgets_values_named": {
+        "scheduler": "simple",
+        "steps": 20,
+        "denoise": 1
+      }
+    },
+    {
+      "id": 163,
+      "type": "PrimitiveFloat",
+      "pos": [
+        -2961.6670795282735,
+        4909.529210891195
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            284
+          ]
+        }
+      ],
+      "title": "Float (duration)",
+      "properties": {
+        "Node name for S&R": "PrimitiveFloat",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        2
+      ],
+      "widgets_values_named": {
+        "value": 2
+      }
+    },
+    {
+      "id": 164,
+      "type": "ComfyMathExpression",
+      "pos": [
+        -2506.4076451213746,
+        4917.631724702292
+      ],
+      "size": [
+        360,
+        170
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "a",
+          "name": "values.a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 284
+        },
+        {
+          "label": "b",
+          "name": "values.b",
+          "shape": 7,
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            285
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ComfyMathExpression",
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "max(5, round(a * 24)) + (5 - (max(5, round(a * 24)) % 17)) % 17"
+      ],
+      "widgets_values_named": {
+        "expression": "max(5, round(a * 24)) + (5 - (max(5, round(a * 24)) % 17)) % 17"
       }
     }
   ],
@@ -790,6 +897,22 @@
       146,
       0,
       "MODEL"
+    ],
+    [
+      284,
+      163,
+      0,
+      164,
+      0,
+      "FLOAT"
+    ],
+    [
+      285,
+      164,
+      1,
+      153,
+      4,
+      "INT"
     ]
   ],
   "groups": [],
@@ -801,10 +924,10 @@
     "VHS_MetadataImage": true,
     "VHS_KeepIntermediate": true,
     "ds": {
-      "scale": 0.8140274938684013,
+      "scale": 0.28531167061100143,
       "offset": [
-        2331.0699015555424,
-        -4289.137643155897
+        3080.4554856065683,
+        -3133.346329078121
       ]
     }
   },

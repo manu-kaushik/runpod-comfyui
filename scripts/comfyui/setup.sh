@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Install ComfyUI on a RunPod PyTorch pod. Run once before pack scripts.
-#   COMFYUI_REF=v0.34.0 bash install-comfyui.sh   (default tag)
-#   bash install-comfyui.sh --fresh               (re-clone ComfyUI)
+#   COMFYUI_REF=v0.34.0 bash setup.sh   (default tag)
+#   bash setup.sh --fresh               (re-clone ComfyUI)
 
 set -euo pipefail
 
@@ -13,7 +13,7 @@ for arg in "$@"; do
 done
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
 COMFYUI=/workspace/comfyui
 VENV="$COMFYUI/.venv"
 ARGS_FILE="$COMFYUI/comfyui_args.txt"
@@ -51,7 +51,6 @@ source "$VENV/bin/activate"
 python -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda)"
 
 pip install -U pip wheel
-# Keep the base image torch; install everything else ComfyUI needs.
 grep -Ev '^(torch|torchvision|torchaudio)([^a-zA-Z]|$)' "$COMFYUI/requirements.txt" \
     > /tmp/comfyui-requirements-no-torch.txt
 pip install -r /tmp/comfyui-requirements-no-torch.txt
@@ -101,6 +100,6 @@ echo "ComfyUI installed at $COMFYUI"
 echo "Models path: /workspace/models (via extra_model_paths.yaml)"
 echo ""
 echo "Start ComfyUI:"
-echo "  bash $REPO/scripts/start-comfyui.sh"
+echo "  bash $REPO/scripts/comfyui/start.sh"
 echo ""
 echo "Then run a pack script."

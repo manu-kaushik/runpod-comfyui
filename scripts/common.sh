@@ -1,4 +1,4 @@
-# Shared paths and fetch helper for pack scripts. Source from scripts/*.sh.
+# Shared paths and fetch helper. Sourced from scripts/comfyui/* and scripts/packs/*.
 
 COMFYUI=/workspace/comfyui
 REPO=/workspace/custom-setup

@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-source "$(dirname "$0")/common.sh"
+source "$(dirname "$0")/../common.sh"
 
 mkdir -p "$WF"
 

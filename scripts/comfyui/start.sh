@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-# Start ComfyUI in the background (survives terminal exit). Run after install-comfyui.sh.
+# Start ComfyUI in the background (survives terminal exit). Run after setup.sh.
 
 set -euo pipefail
 
-source "$(dirname "$0")/common.sh"
+source "$(dirname "$0")/../common.sh"
 
 VENV="$COMFYUI/.venv"
 ARGS_FILE="$COMFYUI/comfyui_args.txt"
 LOG="$COMFYUI/comfyui.log"
 PID_FILE="$COMFYUI/comfyui.pid"
 
-[[ -f "$COMFYUI/main.py" ]] || { echo "error: run install-comfyui.sh first" >&2; exit 1; }
+[[ -f "$COMFYUI/main.py" ]] || { echo "error: run scripts/comfyui/setup.sh first" >&2; exit 1; }
 [[ -f "$ARGS_FILE" ]] || { echo "error: missing $ARGS_FILE" >&2; exit 1; }
 
 if [[ -f "$PID_FILE" ]]; then

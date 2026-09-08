@@ -10,7 +10,7 @@ for arg in "$@"; do
     [[ "$arg" == --skip-diff ]] && SKIP_DIFFUSION_MODEL=true
 done
 
-source "$(dirname "$0")/common.sh"
+source "$(dirname "$0")/../common.sh"
 
 mkdir -p "$WF"
 

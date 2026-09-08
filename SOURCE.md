@@ -49,7 +49,6 @@ Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run instal
 | Krea setup     | `bash /workspace/custom-setup/scripts/packs/krea.sh` |
 | Z-Image        | `bash /workspace/custom-setup/scripts/packs/zimage.sh` |
 | Flux i2i       | `bash /workspace/custom-setup/scripts/packs/flux.sh` |
-| LTX t2v+i2v    | `bash /workspace/custom-setup/scripts/packs/ltx.sh` |
 | MiniMax t2v+i2v| `bash /workspace/custom-setup/scripts/packs/minimax.sh` |
 | Qwen i2i       | `bash /workspace/custom-setup/scripts/packs/qwen.sh` |
 | Clone repo     | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup` |
@@ -93,7 +92,7 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh`.
 - `COMFYUI_REF` env overrides default tag (`v0.34.0`).
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `scripts/packs/*.sh`; delete unused scripts freely.
-- Pack roles: Krea/Z-Image t2i; Flux i2i; LTX video (t2v + i2v); MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
+- Pack roles: Krea/Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
 - Local model filenames: lowercase, underscore-separated. Workflow JSON must match.
 - Scripts grouped: `comfyui/`, `filebrowser/`, `packs/`; shared `scripts/common.sh`.
 

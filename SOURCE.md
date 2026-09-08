@@ -75,7 +75,7 @@ RunPod PyTorch image (4090-class): `runpod/pytorch:1.0.2-cu1281-torch271-ubuntu2
 2. venv; `pip install -r requirements.txt` excluding torch (keep base image CUDA torch)
 3. Clone ComfyUI-GGUF + ComfyUI-Manager
 4. Install `config/extra_model_paths.yaml` → `$COMFYUI/extra_model_paths.yaml`
-5. Write `comfyui_args.txt` (listen 8188, input/output paths)
+5. Write `comfyui_args.txt` (listen 8188, disable API nodes, input/output paths)
 
 Each `scripts/packs/*.sh`:
 

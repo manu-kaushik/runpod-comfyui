@@ -89,6 +89,7 @@ cat > "$ARGS_FILE" <<'EOF'
 --port
 8188
 --enable-cors-header
+--disable-api-nodes
 --input-directory
 /workspace/input
 --output-directory

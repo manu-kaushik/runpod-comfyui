@@ -52,6 +52,7 @@ Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run instal
 | MiniMax t2v+i2v| `bash /workspace/custom-setup/scripts/packs/minimax.sh` |
 | Qwen i2i       | `bash /workspace/custom-setup/scripts/packs/qwen.sh` |
 | Clone repo     | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup` |
+| Pod cleanup    | `bash /workspace/custom-setup/scripts/cleanup.sh` |
 
 ## Configuration
 
@@ -65,7 +66,7 @@ Fixed paths (no env vars):
 - Workflows dest: `$COMFYUI/user/default/workflows/`
 - FileBrowser DB: `/workspace/filebrowser.db` (port 8080, root `/workspace`)
 
-RunPod PyTorch image (4090-class): `runpod/pytorch:1.0.2-cu1281-torch271-ubuntu2404`
+RunPod PyTorch image (4090-class): `runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404` (PyTorch 2.8.0, CUDA 12.8.1)
 
 ## Architecture
 
@@ -95,7 +96,10 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh`.
 - Pack roles: Krea/Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
 - Local model filenames: lowercase, underscore-separated. Workflow JSON must match.
 - Scripts grouped: `comfyui/`, `filebrowser/`, `packs/`; shared `scripts/common.sh`.
+- After clone on pod, run `scripts/cleanup.sh` to drop `.git`, `.gitignore`, `README.md`, `SOURCE.md`, `AGENTS.md`.
+- Stay on CUDA 12.8 (`cu1281`) for 4090-class pods; CUDA 13 only for Blackwell with fresh venv and full pack re-test.
 
 ## Deferred
 
 - Confirm install + pack scripts on PyTorch pod: torch, ComfyUI start, GGUF, Dev Mode, one workflow per pack.
+- CUDA 13 migration: `runpod/pytorch:1.0.2-cu1300-torch291-ubuntu2404`; requires host driver R580+, not a drop-in swap.

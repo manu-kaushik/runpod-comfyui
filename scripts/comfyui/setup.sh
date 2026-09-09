@@ -26,7 +26,7 @@ die() {
 command -v git >/dev/null 2>&1 || die "git is required"
 command -v curl >/dev/null 2>&1 || die "curl is required"
 python3 -c "import torch; assert torch.cuda.is_available()" 2>/dev/null \
-    || die "CUDA torch not found — use a RunPod PyTorch template (e.g. runpod/pytorch:1.0.2-cu1281-torch271-ubuntu2404)"
+    || die "CUDA torch not found — use a RunPod PyTorch template (e.g. runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404)"
 
 mkdir -p /workspace/models/{checkpoints,diffusion_models,text_encoders,vae,loras,clip}
 mkdir -p /workspace/input /workspace/output

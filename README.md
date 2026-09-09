@@ -8,7 +8,7 @@ Models: `/workspace/models/`
 
 Repo: `/workspace/custom-setup`
 
-Use a **RunPod PyTorch** pod (e.g. `runpod/pytorch:1.0.2-cu1281-torch271-ubuntu2404`), expose ports **8188** (ComfyUI) and **8080** (FileBrowser, optional), then run ComfyUI setup once (Dev Mode is enabled automatically).
+Use a **RunPod PyTorch** pod (e.g. `runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404`), expose ports **8188** (ComfyUI) and **8080** (FileBrowser, optional), then run ComfyUI setup once (Dev Mode is enabled automatically).
 
 **Local model filenames:** lowercase, underscore-separated. Workflow JSON must match those names.
 
@@ -19,9 +19,12 @@ Run once per volume (persists under `/workspace`):
 
 ```bash
 git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup
+bash /workspace/custom-setup/scripts/cleanup.sh
 
 bash /workspace/custom-setup/scripts/comfyui/setup.sh
 ```
+
+`cleanup.sh` removes `.git`, `.gitignore`, `README.md`, `SOURCE.md`, and `AGENTS.md`.
 
 `setup.sh` clones ComfyUI, installs ComfyUI-GGUF + ComfyUI-Manager, and points ComfyUI at `/workspace/models` via `extra_model_paths.yaml` (no symlinks). Input/output use `/workspace/input` and `/workspace/output` via launch args. Dev Mode is enabled automatically.
 
@@ -85,6 +88,7 @@ custom-setup/
   config/extra_model_paths.yaml
   scripts/
     common.sh
+    cleanup.sh
     comfyui/
       setup.sh
       start.sh

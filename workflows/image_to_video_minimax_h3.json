@@ -351,13 +351,13 @@
         "",
         1344,
         768,
-        5,
+        8,
         757358688076805,
         "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
         "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
         "minimax_h3_video_vae_fp16.safetensors",
         "minimax_h3_audio_vae_fp32.safetensors",
-        false,
+        true,
         "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
         1,
         8
@@ -366,13 +366,13 @@
         "prompt": "",
         "width": 1344,
         "height": 768,
-        "value_1": 5,
+        "value_1": 8,
         "noise_seed": 757358688076805,
         "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
         "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
         "vae_name": "minimax_h3_video_vae_fp16.safetensors",
         "vae_name_1": "minimax_h3_audio_vae_fp32.safetensors",
-        "value": false,
+        "value": true,
         "lora_name": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
         "strength_model_1": 1,
         "value_2": 8
@@ -1439,14 +1439,13 @@
             "inputs": [
               {
                 "label": "a",
-                "localized_name": "values.a",
+                "localized_name": "a",
                 "name": "values.a",
                 "type": "FLOAT,INT,BOOLEAN",
                 "link": 205
               },
               {
-                "label": "b",
-                "localized_name": "values.b",
+                "localized_name": "b",
                 "name": "values.b",
                 "shape": 7,
                 "type": "FLOAT,INT,BOOLEAN",
@@ -1624,12 +1623,14 @@
               {
                 "localized_name": "on_false",
                 "name": "on_false",
+                "shape": 7,
                 "type": "MODEL",
                 "link": 232
               },
               {
                 "localized_name": "on_true",
                 "name": "on_true",
+                "shape": 7,
                 "type": "MODEL",
                 "link": 233
               },
@@ -1685,12 +1686,14 @@
               {
                 "localized_name": "on_false",
                 "name": "on_false",
+                "shape": 7,
                 "type": "INT",
                 "link": 236
               },
               {
                 "localized_name": "on_true",
                 "name": "on_true",
+                "shape": 7,
                 "type": "INT",
                 "link": 237
               },
@@ -2274,13 +2277,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7394341565217399,
+      "scale": 0.41739130434782673,
       "offset": [
-        1669.4291134437194,
-        -4569.251088824695
+        3222.2675404566608,
+        -4396.772711629075
       ]
     },
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.51.10",
     "VHS_KeepIntermediate": true,
     "VHS_MetadataImage": true,
     "VHS_latentpreview": false,

@@ -271,7 +271,7 @@
         ]
       },
       "widgets_values": [
-        "Convert this image to pop art poster style",
+        "",
         "",
         "qwen_image_edit_2511_int8_convrot.safetensors",
         "qwen_2.5_vl_7b_fp8_scaled.safetensors",
@@ -281,7 +281,7 @@
         1119496583977398
       ],
       "widgets_values_named": {
-        "prompt": "Convert this image to pop art poster style",
+        "prompt": "",
         "prompt_1": "",
         "unet_name_1": "qwen_image_edit_2511_int8_convrot.safetensors",
         "clip_name_1": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
@@ -1348,13 +1348,15 @@
               {
                 "localized_name": "on_false",
                 "name": "on_false",
-                "type": "MODEL",
+                "shape": 7,
+                "type": "*",
                 "link": 331
               },
               {
                 "localized_name": "on_true",
                 "name": "on_true",
-                "type": "MODEL",
+                "shape": 7,
+                "type": "*",
                 "link": 332
               },
               {
@@ -1371,7 +1373,7 @@
               {
                 "localized_name": "output",
                 "name": "output",
-                "type": "MODEL",
+                "type": "*",
                 "links": [
                   351
                 ]
@@ -1566,13 +1568,15 @@
               {
                 "localized_name": "on_false",
                 "name": "on_false",
-                "type": "FLOAT",
+                "shape": 7,
+                "type": "*",
                 "link": 328
               },
               {
                 "localized_name": "on_true",
                 "name": "on_true",
-                "type": "FLOAT",
+                "shape": 7,
+                "type": "*",
                 "link": 329
               },
               {
@@ -1589,7 +1593,7 @@
               {
                 "localized_name": "output",
                 "name": "output",
-                "type": "FLOAT",
+                "type": "*",
                 "links": [
                   356
                 ]
@@ -1633,13 +1637,15 @@
               {
                 "localized_name": "on_false",
                 "name": "on_false",
-                "type": "INT",
+                "shape": 7,
+                "type": "*",
                 "link": 348
               },
               {
                 "localized_name": "on_true",
                 "name": "on_true",
-                "type": "INT",
+                "shape": 7,
+                "type": "*",
                 "link": 347
               },
               {
@@ -1656,7 +1662,7 @@
               {
                 "localized_name": "output",
                 "name": "output",
-                "type": "INT",
+                "type": "*",
                 "links": [
                   355
                 ]
@@ -2291,13 +2297,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7241967149437386,
+      "scale": 0.7966163864381126,
       "offset": [
-        1572.4988981216031,
-        659.7442355788216
+        888.9092972086484,
+        606.6581367760657
       ]
     },
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.51.10",
     "workflowRendererVersion": "LG",
     "groupNodes": {},
     "VHS_latentpreview": false,

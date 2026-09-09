@@ -107,10 +107,10 @@
       ],
       "properties": {},
       "widgets_values": [
-        "%date:yyyy-MM-dd%/%date:hhmmss%"
+        "%date:yyyy-MM-dd%/%date:hh-mm%"
       ],
       "widgets_values_named": {
-        "filename_prefix": "%date:yyyy-MM-dd%/%date:hhmmss%"
+        "filename_prefix": "%date:yyyy-MM-dd%/%date:hh-mm%"
       },
       "color": "#232",
       "bgcolor": "#353"
@@ -877,13 +877,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6052952216738631,
+      "scale": 0.805647940047912,
       "offset": [
-        210.985662157923,
-        -995.137665367362
+        -205.99616950794086,
+        -1071.018307029516
       ]
     },
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.51.10",
     "workflowRendererVersion": "LG",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,

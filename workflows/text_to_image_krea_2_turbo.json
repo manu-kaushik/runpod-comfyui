@@ -5,46 +5,6 @@
   "last_link_id": 125,
   "nodes": [
     {
-      "id": 29,
-      "type": "SaveImage",
-      "pos": [
-        5360.98646264961,
-        -152.1962701486944
-      ],
-      "size": [
-        880,
-        1020
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 111
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "SaveImage",
-        "cnr_id": "comfy-core",
-        "ver": "0.25.0"
-      },
-      "widgets_values": [
-        "Krea2_turbo"
-      ],
-      "widgets_values_named": {
-        "filename_prefix": "Krea2_turbo"
-      }
-    },
-    {
       "id": 54,
       "type": "VAEDecode",
       "pos": [
@@ -200,52 +160,6 @@
       "widgets_values_named": {
         "vae_name": "qwen_image_vae.safetensors"
       }
-    },
-    {
-      "id": 51,
-      "type": "CLIPTextEncode",
-      "pos": [
-        2988.3849814909127,
-        -63.64220324183748
-      ],
-      "size": [
-        480,
-        420
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 125
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            89,
-            94
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode",
-        "cnr_id": "comfy-core",
-        "ver": "0.25.0"
-      },
-      "widgets_values": [
-        "A minimal dark-themed, sleek dark charcoal and deep obsidian background, subtle abstract geometric lines glowing with a dim neon blue hue, clean composition, soft ambient lighting"
-      ],
-      "widgets_values_named": {
-        "text": "A minimal dark-themed, sleek dark charcoal and deep obsidian background, subtle abstract geometric lines glowing with a dim neon blue hue, clean composition, soft ambient lighting"
-      },
-      "color": "#232",
-      "bgcolor": "#353"
     },
     {
       "id": 58,
@@ -418,6 +332,92 @@
       }
     },
     {
+      "id": 29,
+      "type": "SaveImage",
+      "pos": [
+        5360.98646264961,
+        -152.1962701486944
+      ],
+      "size": [
+        880,
+        1020
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 111
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        "%date:yyyy-MM-dd%/%date:hh-mm%"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "%date:yyyy-MM-dd%/%date:hh-mm%"
+      }
+    },
+    {
+      "id": 51,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2988.3849814909127,
+        -63.64220324183748
+      ],
+      "size": [
+        480,
+        420
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 125
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            89,
+            94
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode",
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0"
+      },
+      "widgets_values": [
+        ""
+      ],
+      "widgets_values_named": {
+        "text": ""
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
       "id": 52,
       "type": "EmptyLatentImage",
       "pos": [
@@ -448,13 +448,13 @@
         "ver": "0.25.0"
       },
       "widgets_values": [
-        720,
-        1080,
+        1024,
+        1024,
         1
       ],
       "widgets_values_named": {
-        "width": 720,
-        "height": 1080,
+        "width": 1024,
+        "height": 1024,
         "batch_size": 1
       }
     }
@@ -545,13 +545,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.5462649465220368,
+      "scale": 0.6557672811928543,
       "offset": [
-        -3556.233873653032,
-        94.43066544231948
+        -4308.462620019919,
+        484.4887783317404
       ]
     },
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.51.10",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

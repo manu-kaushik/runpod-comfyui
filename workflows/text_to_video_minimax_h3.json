@@ -59,6 +59,53 @@
       "bgcolor": "#000"
     },
     {
+      "id": 92,
+      "type": "SaveVideo",
+      "pos": [
+        -660,
+        4840
+      ],
+      "size": [
+        582.5639324456079,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 248
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.33.0"
+      },
+      "widgets_values": [
+        "%date:yyyy-MM-dd%/%date:hh-mm%",
+        "mp4",
+        "h264",
+        "auto",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "%date:yyyy-MM-dd%/%date:hh-mm%",
+        "format": "mp4",
+        "format.codec": "h264",
+        "format.codec.encoding": "auto",
+        "codec": "auto"
+      }
+    },
+    {
       "id": 140,
       "type": "79dd8a95-ce9d-4c14-b264-2162e8bec5ce",
       "pos": [
@@ -147,80 +194,33 @@
       },
       "widgets_values": [
         "",
-        1344,
-        768,
-        5,
+        480,
+        480,
+        8,
         757358688076805,
         "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
         "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
         "minimax_h3_video_vae_fp16.safetensors",
         "minimax_h3_audio_vae_fp32.safetensors",
-        false,
+        true,
         "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
         1,
         8
       ],
       "widgets_values_named": {
         "prompt": "",
-        "width": 1344,
-        "height": 768,
-        "value_1": 5,
+        "width": 480,
+        "height": 480,
+        "value_1": 8,
         "noise_seed": 757358688076805,
         "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
         "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
         "vae_name": "minimax_h3_video_vae_fp16.safetensors",
         "vae_name_1": "minimax_h3_audio_vae_fp32.safetensors",
-        "value": false,
+        "value": true,
         "lora_name": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
         "strength_model_1": 1,
         "value_2": 8
-      }
-    },
-    {
-      "id": 92,
-      "type": "SaveVideo",
-      "pos": [
-        -660,
-        4840
-      ],
-      "size": [
-        582.5639324456079,
-        130
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "video",
-          "type": "VIDEO",
-          "link": 248
-        }
-      ],
-      "outputs": [
-        {
-          "name": "video",
-          "type": "VIDEO",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.33.0"
-      },
-      "widgets_values": [
-        "%date:yyyy-MM-dd%/%date:hh-mm%",
-        "mp4",
-        "h264",
-        "auto",
-        "auto"
-      ],
-      "widgets_values_named": {
-        "filename_prefix": "%date:yyyy-MM-dd%/%date:hh-mm%",
-        "format": "mp4",
-        "format.codec": "h264",
-        "format.codec.encoding": "auto",
-        "codec": "auto"
       }
     }
   ],
@@ -1231,14 +1231,13 @@
             "inputs": [
               {
                 "label": "a",
-                "localized_name": "values.a",
+                "localized_name": "a",
                 "name": "values.a",
                 "type": "FLOAT,INT,BOOLEAN",
                 "link": 205
               },
               {
-                "label": "b",
-                "localized_name": "values.b",
+                "localized_name": "b",
                 "name": "values.b",
                 "shape": 7,
                 "type": "FLOAT,INT,BOOLEAN",
@@ -1416,12 +1415,14 @@
               {
                 "localized_name": "on_false",
                 "name": "on_false",
+                "shape": 7,
                 "type": "MODEL",
                 "link": 232
               },
               {
                 "localized_name": "on_true",
                 "name": "on_true",
+                "shape": 7,
                 "type": "MODEL",
                 "link": 233
               },
@@ -1477,12 +1478,14 @@
               {
                 "localized_name": "on_false",
                 "name": "on_false",
+                "shape": 7,
                 "type": "INT",
                 "link": 236
               },
               {
                 "localized_name": "on_true",
                 "name": "on_true",
+                "shape": 7,
                 "type": "INT",
                 "link": 237
               },
@@ -2065,16 +2068,16 @@
   },
   "config": {},
   "extra": {
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.51.10",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,
     "VHS_KeepIntermediate": true,
     "ds": {
-      "scale": 0.6431677852348998,
+      "scale": 0.8560563221476518,
       "offset": [
-        2188.2067125276917,
-        -4399.570322304585
+        1762.1976780312104,
+        -4603.487767530465
       ]
     }
   },

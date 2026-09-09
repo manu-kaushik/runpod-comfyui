@@ -238,49 +238,6 @@
       }
     },
     {
-      "id": 196,
-      "type": "LoadImage",
-      "pos": [
-        491.6006641266204,
-        2028.1119882885064
-      ],
-      "size": [
-        282.798828125,
-        314.0000000000002
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            346
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "2026-54-21-15-ii__00001_.png",
-        "image"
-      ],
-      "widgets_values_named": {
-        "image": "2026-54-21-15-ii__00001_.png",
-        "upload": "image"
-      },
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
       "id": 217,
       "type": "VAELoader",
       "pos": [
@@ -292,7 +249,7 @@
         58
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -362,44 +319,6 @@
       }
     },
     {
-      "id": 203,
-      "type": "SaveImage",
-      "pos": [
-        2516.1885787754554,
-        2004.727383088506
-      ],
-      "size": [
-        440,
-        408.0000000000002
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 347
-        }
-      ],
-      "outputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {},
-      "widgets_values": [
-        "%date:yyyy-MM-dd%/%date:hhmmss%"
-      ],
-      "widgets_values_named": {
-        "filename_prefix": "%date:yyyy-MM-dd%/%date:hhmmss%"
-      },
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
       "id": 213,
       "type": "ConditioningZeroOut",
       "pos": [
@@ -432,6 +351,49 @@
       "properties": {
         "Node name for S&R": "ConditioningZeroOut"
       }
+    },
+    {
+      "id": 196,
+      "type": "LoadImage",
+      "pos": [
+        491.6006641266204,
+        2028.1119882885064
+      ],
+      "size": [
+        282.798828125,
+        314.0000000000002
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            346
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "111325_00001_.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "111325_00001_.png",
+        "upload": "image"
+      },
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
     },
     {
       "id": 215,
@@ -468,15 +430,53 @@
         "Node name for S&R": "CLIPTextEncodeFlux"
       },
       "widgets_values": [
-        "Change the background to sky with sunset",
-        "Change the background to sky with sunset",
+        "",
+        "",
         2.5
       ],
       "widgets_values_named": {
-        "clip_l": "Change the background to sky with sunset",
-        "t5xxl": "Change the background to sky with sunset",
+        "clip_l": "",
+        "t5xxl": "",
         "guidance": 2.5
       }
+    },
+    {
+      "id": 203,
+      "type": "SaveImage",
+      "pos": [
+        2516.1885787754554,
+        2004.727383088506
+      ],
+      "size": [
+        440,
+        408.0000000000002
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 347
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "%date:yyyy-MM-dd%/%date:hh-mm%"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "%date:yyyy-MM-dd%/%date:hh-mm%"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -589,13 +589,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6830134553650709,
+      "scale": 0.42409761837248483,
       "offset": [
-        -401.4913769535776,
-        -1215.0696939550369
+        670.8587571864477,
+        -1016.2114967769118
       ]
     },
-    "frontendVersion": "1.49.6",
+    "frontendVersion": "1.51.10",
     "workflowRendererVersion": "LG",
     "groupNodes": {},
     "VHS_latentpreview": false,

@@ -10,8 +10,11 @@ mkdir -p "$WF"
 
 cp -f "$REPO/workflows/image_to_image_qwen_image_edit_2511.json" "$WF/"
 
-fetch "$MODELS/diffusion_models/qwen_image_edit_2511_q3_k_m.gguf" \
-    "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/main/qwen-image-edit-2511-Q3_K_M.gguf"
+fetch "$MODELS/diffusion_models/qwen_image_edit_2511_int8_convrot.safetensors" \
+    "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_2511_int8_convrot.safetensors"
+
+fetch "$MODELS/loras/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors" \
+    "https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors"
 
 fetch "$MODELS/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors" \
     "https://huggingface.co/Comfy-Org/HunyuanVideo_1.5_repackaged/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors"

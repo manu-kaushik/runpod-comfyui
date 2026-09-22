@@ -88,6 +88,7 @@ cat > "$ARGS_FILE" <<'EOF'
 0.0.0.0
 --port
 8188
+--highvram
 --enable-cors-header
 --disable-api-nodes
 --input-directory

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # Install ComfyUI on a RunPod PyTorch pod. Run once before pack scripts.
-#   COMFYUI_REF=v0.34.0 bash setup.sh   (default tag)
+#   COMFYUI_REF=v0.37.0 bash setup.sh   (default tag)
 #   bash setup.sh --fresh               (re-clone ComfyUI)
 
 set -euo pipefail
 
-COMFYUI_REF="${COMFYUI_REF:-v0.34.0}"
+COMFYUI_REF="${COMFYUI_REF:-v0.37.0}"
 FRESH=false
 for arg in "$@"; do
     [[ "$arg" == --fresh ]] && FRESH=true

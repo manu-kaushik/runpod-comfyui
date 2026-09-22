@@ -90,7 +90,7 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh`.
 - Custom ComfyUI on PyTorch pod instead of official RunPod ComfyUI template (pinned old core).
 - Models live on `/workspace/models/`; ComfyUI reads them via `extra_model_paths.yaml` — no symlinks.
 - Input/output via ComfyUI CLI args, not symlinks.
-- `COMFYUI_REF` env overrides default tag (`v0.34.0`).
+- `COMFYUI_REF` env overrides default tag (`v0.37.0`).
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `scripts/packs/*.sh`; delete unused scripts freely.
 - Pack roles: Krea/Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.

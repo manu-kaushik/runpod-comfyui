@@ -28,7 +28,7 @@ bash /workspace/custom-setup/scripts/comfyui/setup.sh
 
 `setup.sh` clones ComfyUI, installs ComfyUI-GGUF + ComfyUI-Manager, and points ComfyUI at `/workspace/models` via `extra_model_paths.yaml` (no symlinks). Input/output use `/workspace/input` and `/workspace/output` via launch args. Dev Mode is enabled automatically.
 
-Override ComfyUI version: `COMFYUI_REF=v0.34.0 bash /workspace/custom-setup/scripts/comfyui/setup.sh`
+Override ComfyUI version: `COMFYUI_REF=v0.37.0 bash /workspace/custom-setup/scripts/comfyui/setup.sh`
 
 After the first start, open ComfyUI Manager and confirm **ComfyUI-GGUF** is installed correctly (GGUF workflows need it). If it shows missing dependencies or failed install, use Manager's **Try fix** button on that node.
 

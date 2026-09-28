@@ -1,8 +1,8 @@
 {
   "id": "08988737-a544-4ab1-99fb-22d67b7c36e3",
   "revision": 0,
-  "last_node_id": 75,
-  "last_link_id": 128,
+  "last_node_id": 82,
+  "last_link_id": 147,
   "nodes": [
     {
       "id": 54,
@@ -18,7 +18,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -43,79 +43,9 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "VAEDecode",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0"
-      }
-    },
-    {
-      "id": 53,
-      "type": "KSampler",
-      "pos": [
-        4259.089783543691,
-        -480.7025418362788
-      ],
-      "size": [
-        320,
-        590
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 128
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 89
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 90
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 91
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            92
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "KSampler",
-        "cnr_id": "comfy-core",
-        "ver": "0.25.0"
-      },
-      "widgets_values": [
-        294682518664063,
-        "randomize",
-        8,
-        1,
-        "euler",
-        "simple",
-        1
-      ],
-      "widgets_values_named": {
-        "seed": 294682518664063,
-        "control_after_generate": "randomize",
-        "steps": 8,
-        "cfg": 1,
-        "sampler_name": "euler",
-        "scheduler": "simple",
-        "denoise": 1
+        "ver": "0.25.0",
+        "Node name for S&R": "VAEDecode"
       }
     },
     {
@@ -143,9 +73,9 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "VAELoader",
         "cnr_id": "comfy-core",
         "ver": "0.25.0",
+        "Node name for S&R": "VAELoader",
         "models": [
           {
             "name": "qwen_image_vae.safetensors",
@@ -194,9 +124,9 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ConditioningZeroOut",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0"
+        "ver": "0.25.0",
+        "Node name for S&R": "ConditioningZeroOut"
       }
     },
     {
@@ -224,9 +154,9 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "CLIPLoader",
         "cnr_id": "comfy-core",
         "ver": "0.25.0",
+        "Node name for S&R": "CLIPLoader",
         "models": [
           {
             "name": "qwen3vl_4b_fp8_scaled.safetensors",
@@ -258,7 +188,7 @@
         1020
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -275,9 +205,9 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "SaveImage",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0"
+        "ver": "0.25.0",
+        "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
         "%date:yyyy-MM-dd%/%date:hh-mm%"
@@ -319,9 +249,9 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "CLIPTextEncode",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0"
+        "ver": "0.25.0",
+        "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
         ""
@@ -358,9 +288,9 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "EmptyLatentImage",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0"
+        "ver": "0.25.0",
+        "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
         1024,
@@ -374,113 +304,11 @@
       }
     },
     {
-      "id": 59,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        3006.890937478581,
-        -682.025473577096
-      ],
-      "size": [
-        450,
-        170
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 126
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            127
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "cnr_id": "comfy-core",
-        "ver": "0.25.0",
-        "models": [
-          {
-            "name": "krea2_realism_v2.safetensors",
-            "url": "https://huggingface.co/RudySen/Krea2-realism-V2/resolve/main/Krea2-realism-V2.safetensors",
-            "directory": "loras"
-          }
-        ]
-      },
-      "widgets_values": [
-        "krea2_realism_v2.safetensors",
-        1.5
-      ],
-      "widgets_values_named": {
-        "lora_name": "krea2_realism_v2.safetensors",
-        "strength_model": 1.5
-      }
-    },
-    {
-      "id": 75,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        3554.5906985182096,
-        -661.5081939447236
-      ],
-      "size": [
-        450,
-        170
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 127
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            128
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoraLoaderModelOnly",
-        "cnr_id": "comfy-core",
-        "ver": "0.25.0",
-        "models": [
-          {
-            "name": "krea2_realistic_snapshot.safetensors",
-            "url": "https://huggingface.co/uzumix/krea2_realisticSnapshot/resolve/main/RealisticSnapshotKrea2.safetensors",
-            "directory": "loras"
-          }
-        ]
-      },
-      "widgets_values": [
-        "krea2_realistic_snapshot.safetensors",
-        0.8
-      ],
-      "widgets_values_named": {
-        "lora_name": "krea2_realistic_snapshot.safetensors",
-        "strength_model": 0.8
-      }
-    },
-    {
-      "id": 74,
+      "id": 79,
       "type": "UNETLoader",
       "pos": [
-        2598.532580577118,
-        -677.8283682863089
+        1980.0896125505492,
+        -689.5425089459535
       ],
       "size": [
         270,
@@ -495,21 +323,14 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            126
+            137
           ]
         }
       ],
       "properties": {
-        "Node name for S&R": "UNETLoader",
         "cnr_id": "comfy-core",
-        "ver": "0.25.0",
-        "models": [
-          {
-            "name": "krea2_turbo_fp8_scaled.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors",
-            "directory": "diffusion_models"
-          }
-        ]
+        "ver": "0.34.0",
+        "Node name for S&R": "UNETLoader"
       },
       "widgets_values": [
         "krea2_turbo_fp8_scaled.safetensors",
@@ -518,6 +339,229 @@
       "widgets_values_named": {
         "unet_name": "krea2_turbo_fp8_scaled.safetensors",
         "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 53,
+      "type": "KSampler",
+      "pos": [
+        4259.089783543691,
+        -480.7025418362788
+      ],
+      "size": [
+        320,
+        590
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 147
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 89
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 90
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            92
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        294682518664063,
+        "randomize",
+        8,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 294682518664063,
+        "control_after_generate": "randomize",
+        "steps": 8,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 77,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        2337.374084587788,
+        -695.9503124162404
+      ],
+      "size": [
+        450,
+        170
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 137
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            145
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "models": [
+          {
+            "name": "krea2_realistic_snapshot.safetensors",
+            "url": "https://huggingface.co/uzumix/krea2_realisticSnapshot/resolve/main/RealisticSnapshotKrea2.safetensors",
+            "directory": "loras"
+          }
+        ]
+      },
+      "widgets_values": [
+        "krea2_filterbypass3.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "krea2_filterbypass3.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 82,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        2962.453717600108,
+        -704.1672988781507
+      ],
+      "size": [
+        450,
+        170
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 145
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            146
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "models": [
+          {
+            "name": "krea2_realistic_snapshot.safetensors",
+            "url": "https://huggingface.co/uzumix/krea2_realisticSnapshot/resolve/main/RealisticSnapshotKrea2.safetensors",
+            "directory": "loras"
+          }
+        ]
+      },
+      "widgets_values": [
+        "krea2_realism_engine_v2.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "krea2_realism_engine_v2.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 80,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        3515.440030881548,
+        -707.2925033524386
+      ],
+      "size": [
+        450,
+        170
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            147
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.25.0",
+        "Node name for S&R": "LoraLoaderModelOnly",
+        "models": [
+          {
+            "name": "krea2_realistic_snapshot.safetensors",
+            "url": "https://huggingface.co/uzumix/krea2_realisticSnapshot/resolve/main/RealisticSnapshotKrea2.safetensors",
+            "directory": "loras"
+          }
+        ]
+      },
+      "widgets_values": [
+        "krea2_realism_v2.safetensors",
+        1.5
+      ],
+      "widgets_values_named": {
+        "lora_name": "krea2_realism_v2.safetensors",
+        "strength_model": 1.5
       }
     }
   ],
@@ -587,24 +631,32 @@
       "CLIP"
     ],
     [
-      126,
-      74,
+      137,
+      79,
       0,
-      59,
-      0,
-      "MODEL"
-    ],
-    [
-      127,
-      59,
-      0,
-      75,
+      77,
       0,
       "MODEL"
     ],
     [
-      128,
-      75,
+      145,
+      77,
+      0,
+      82,
+      0,
+      "MODEL"
+    ],
+    [
+      146,
+      82,
+      0,
+      80,
+      0,
+      "MODEL"
+    ],
+    [
+      147,
+      80,
       0,
       53,
       0,
@@ -615,13 +667,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.1617317404372949,
+      "scale": 1.2299037679087566,
       "offset": [
-        -2517.6489863639495,
-        801.7705997697245
+        -2841.044543599767,
+        964.678045150922
       ]
     },
-    "frontendVersion": "1.52.7",
+    "frontendVersion": "1.49.6",
     "VHS_latentpreview": false,
     "VHS_latentpreviewrate": 0,
     "VHS_MetadataImage": true,

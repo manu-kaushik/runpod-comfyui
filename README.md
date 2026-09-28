@@ -8,7 +8,7 @@ Models: `/workspace/models/`
 
 Repo: `/workspace/custom-setup`
 
-Use a **RunPod PyTorch** pod (e.g. `runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404`), expose ports **8188** (ComfyUI) and **8080** (FileBrowser, optional), then run ComfyUI setup once (Dev Mode is enabled automatically).
+Use a **RunPod PyTorch** pod (e.g. `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404`), expose ports **8188** (ComfyUI) and **8080** (FileBrowser, optional), then run ComfyUI setup once (Dev Mode is enabled automatically).
 
 **Local model filenames:** lowercase, underscore-separated. Workflow JSON must match those names.
 
@@ -75,7 +75,7 @@ Each pack script copies workflow JSON into ComfyUI's user folder and curls model
 
 | Script | Mode | Workflow(s) |
 | ------------------- | -------- | ----------------------------------------------------------- |
-| `packs/krea.sh` | t2i | `text_to_image_krea_2.json` |
+| `packs/krea.sh` | t2i, i2i | `text_to_image_krea_2.json`, `image_to_image_krea_2.json` |
 | `packs/zimage.sh` | t2i | `text_to_image_z_image_turbo.json` |
 | `packs/flux.sh` | i2i | `image_to_image_flux_1_kontext_dev.json` |
 | `packs/minimax.sh` | t2v, i2v | `text_to_video_minimax_h3.json`, `image_to_video_minimax_h3.json` |

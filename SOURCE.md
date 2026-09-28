@@ -66,7 +66,7 @@ Fixed paths (no env vars):
 - Workflows dest: `$COMFYUI/user/default/workflows/`
 - FileBrowser DB: `/workspace/filebrowser.db` (port 8080, root `/workspace`)
 
-RunPod PyTorch image (4090-class): `runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404` (PyTorch 2.8.0, CUDA 12.8.1)
+RunPod PyTorch image (4090-class): `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404` (PyTorch 2.9.1, CUDA 12.8.1)
 
 ## Architecture
 
@@ -74,9 +74,9 @@ RunPod PyTorch image (4090-class): `runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2
 
 1. Clone pinned ComfyUI tag into `/workspace/comfyui`
 2. venv; `pip install -r requirements.txt` excluding torch (keep base image CUDA torch)
-3. Clone ComfyUI-GGUF + ComfyUI-Manager
+3. Clone ComfyUI-GGUF, ComfyUI-Manager, comfyui-krea2edit
 4. Install `config/extra_model_paths.yaml` → `$COMFYUI/extra_model_paths.yaml`
-5. Write `comfyui_args.txt` (listen 8188, `--highvram`, disable API nodes, input/output paths)
+5. Write `comfyui_args.txt` (listen 8188, disable API nodes, input/output paths; no `--highvram` — OOM on 24 GB with H3)
 
 Each `scripts/packs/*.sh`:
 
@@ -93,13 +93,16 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh`.
 - `COMFYUI_REF` env overrides default tag (`v0.37.0`).
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `scripts/packs/*.sh`; delete unused scripts freely.
-- Pack roles: Krea/Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
+- Pack roles: Krea 2 t2i + i2i (comfyui-krea2edit); Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
+- Krea 2 pack: workflows `text_to_image_krea_2.json`, `image_to_image_krea_2.json`; LoRAs filterbypass3, realism engine v2, realism v2, identity edit v1.2.
 - Local model filenames: lowercase, underscore-separated. Workflow JSON must match.
 - Scripts grouped: `comfyui/`, `filebrowser/`, `packs/`; shared `scripts/common.sh`.
 - After clone on pod, run `scripts/cleanup.sh` to drop `.git`, `.gitignore`, `README.md`, `SOURCE.md`, `AGENTS.md`.
 - Stay on CUDA 12.8 (`cu1281`) for 4090-class pods; CUDA 13 only for Blackwell with fresh venv and full pack re-test.
+- ComfyUI launch: default VRAM management (no `--highvram`); `--highvram` OOMs MiniMax H3 on 4090 24 GB.
+- After changing RunPod PyTorch image, recreate `/workspace/comfyui/.venv` (or `FRESH=true` setup) so extensions match image torch.
 
 ## Deferred
 
 - Confirm install + pack scripts on PyTorch pod: torch, ComfyUI start, GGUF, Dev Mode, one workflow per pack.
-- CUDA 13 migration: `runpod/pytorch:1.0.2-cu1300-torch291-ubuntu2404`; requires host driver R580+, not a drop-in swap.
+- CUDA 13 migration: e.g. `runpod/pytorch:1.0.2-cu1300-torch291-ubuntu2404`; requires host driver R580+, not a drop-in swap.

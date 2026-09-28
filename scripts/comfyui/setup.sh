@@ -26,7 +26,7 @@ die() {
 command -v git >/dev/null 2>&1 || die "git is required"
 command -v curl >/dev/null 2>&1 || die "curl is required"
 python3 -c "import torch; assert torch.cuda.is_available()" 2>/dev/null \
-    || die "CUDA torch not found — use a RunPod PyTorch template (e.g. runpod/pytorch:1.0.2-cu1281-torch280-ubuntu2404)"
+    || die "CUDA torch not found — use a RunPod PyTorch template (e.g. runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404)"
 
 mkdir -p /workspace/models/{checkpoints,diffusion_models,text_encoders,vae,loras,clip}
 mkdir -p /workspace/input /workspace/output
@@ -68,6 +68,7 @@ clone_node() {
 
 clone_node https://github.com/city96/ComfyUI-GGUF.git ComfyUI-GGUF
 clone_node https://github.com/ltdrdata/ComfyUI-Manager.git ComfyUI-Manager
+clone_node https://github.com/lbouaraba/comfyui-krea2edit.git comfyui-krea2edit
 
 cp -f "$REPO/config/extra_model_paths.yaml" "$COMFYUI/extra_model_paths.yaml"
 mkdir -p "$COMFYUI/user/default/workflows"
@@ -88,7 +89,6 @@ cat > "$ARGS_FILE" <<'EOF'
 0.0.0.0
 --port
 8188
---highvram
 --enable-cors-header
 --disable-api-nodes
 --input-directory

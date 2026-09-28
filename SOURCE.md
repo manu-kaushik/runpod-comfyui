@@ -64,7 +64,7 @@ Fixed paths (no env vars):
 - Input: `/workspace/input/` (ComfyUI `--input-directory`)
 - Output: `/workspace/output/` (ComfyUI `--output-directory`)
 - Workflows dest: `$COMFYUI/user/default/workflows/`
-- FileBrowser DB: `/workspace/filebrowser.db` (port 8080, root `/workspace`)
+- FileBrowser DB: `/workspace/filebrowser.db` (port 8080, root `/workspace`); binary `/workspace/bin/filebrowser` (installed by `filebrowser/setup.sh` when not on PATH)
 
 RunPod PyTorch image (4090-class): `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404` (PyTorch 2.9.1, CUDA 12.8.1)
 
@@ -101,6 +101,7 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh`.
 - Stay on CUDA 12.8 (`cu1281`) for 4090-class pods; CUDA 13 only for Blackwell with fresh venv and full pack re-test.
 - ComfyUI launch: default VRAM management (no `--highvram`); `--highvram` OOMs MiniMax H3 on 4090 24 GB.
 - After changing RunPod PyTorch image, recreate `/workspace/comfyui/.venv` (or `FRESH=true` setup) so extensions match image torch.
+- FileBrowser: `FILEBROWSER_VERSION` (default `v2.63.23`) overrides the GitHub release fetched when the binary is missing.
 
 ## Deferred
 

@@ -42,7 +42,7 @@ bash /workspace/custom-setup/scripts/comfyui/stop.sh
 
 ## FileBrowser
 
-Web file manager for `/workspace` (models, input, output). Port **8080**. The `filebrowser` binary is included on RunPod PyTorch images.
+Web file manager for `/workspace` (models, input, output). Port **8080**. `setup.sh` uses the image binary if present, otherwise installs **linux-amd64** to `/workspace/bin/filebrowser`.
 
 ### One-time setup
 
@@ -52,7 +52,7 @@ Run once per volume:
 bash /workspace/custom-setup/scripts/filebrowser/setup.sh
 ```
 
-Login: `admin` / `adminadmin12` (or set `FILEBROWSER_PASSWORD` before setup). Config persists at `/workspace/filebrowser.db`.
+Login: `admin` / `AdminAdmin#123` (or set `FILEBROWSER_PASSWORD` before setup). Config persists at `/workspace/filebrowser.db`.
 
 ### Start / stop
 

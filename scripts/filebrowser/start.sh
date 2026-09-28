@@ -7,8 +7,18 @@ set -euo pipefail
 DB=/workspace/filebrowser.db
 LOG=/workspace/filebrowser.log
 PID_FILE=/workspace/filebrowser.pid
+FILEBROWSER_BIN=/workspace/bin/filebrowser
 
 [[ -f "$DB" ]] || { echo "error: run scripts/filebrowser/setup.sh first" >&2; exit 1; }
+
+if [[ -x "$FILEBROWSER_BIN" ]]; then
+    FB="$FILEBROWSER_BIN"
+elif command -v filebrowser >/dev/null 2>&1; then
+    FB="$(command -v filebrowser)"
+else
+    echo "error: filebrowser not found — run scripts/filebrowser/setup.sh first" >&2
+    exit 1
+fi
 
 if [[ -f "$PID_FILE" ]]; then
     pid="$(cat "$PID_FILE")"
@@ -18,6 +28,6 @@ if [[ -f "$PID_FILE" ]]; then
     fi
 fi
 
-nohup filebrowser -d "$DB" >>"$LOG" 2>&1 &
+nohup "$FB" -d "$DB" >>"$LOG" 2>&1 &
 echo "$!" >"$PID_FILE"
 echo "started FileBrowser pid $(cat "$PID_FILE"), log $LOG"

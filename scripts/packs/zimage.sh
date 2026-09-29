@@ -10,8 +10,8 @@ mkdir -p "$WF"
 
 cp -f "$REPO/workflows/text_to_image_z_image_turbo.json" "$WF/"
 
-fetch "$MODELS/diffusion_models/z_image_turbo_q4_k_m.gguf" \
-    "https://huggingface.co/unsloth/Z-Image-Turbo-GGUF/resolve/main/z-image-turbo-Q4_K_M.gguf"
+fetch "$MODELS/diffusion_models/z_image_turbo_bf16.safetensors" \
+    "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors"
 
 fetch "$MODELS/text_encoders/qwen_3_4b.safetensors" \
     "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"

@@ -6,11 +6,11 @@ Persistent project record for this repository — not chat history, not summarie
 
 ## Overview
 
-RunPod: `scripts/comfyui/setup.sh` on a PyTorch pod, then per-pack `scripts/packs/*.sh` copy workflow JSON and curl models. Repository: https://github.com/manu-kaushik/runpod-comfyui
+RunPod: PyTorch path — `scripts/comfyui/setup.sh` then `scripts/packs/*.sh`. RunPod ComfyUI template — `scripts/custom-setup.sh` (Krea + MiniMax). Repository: https://github.com/manu-kaushik/runpod-comfyui
 
 ## Current focus
 
-Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run install once, then pack scripts.
+Two images documented: PyTorch (full packs) and `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8` (custom-setup).
 
 ## Stack
 
@@ -18,7 +18,7 @@ Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run instal
 | --------- | ---------- | ------------------------------------------ |
 | Language  | Bash       | install + per-pack `*.sh` scripts          |
 | Framework | ComfyUI    | `/workspace/comfyui`                       |
-| Hosting   | RunPod     | PyTorch template; volume `/workspace`      |
+| Hosting   | RunPod     | PyTorch or ComfyUI template; volume `/workspace` |
 
 ## Repository layout
 
@@ -27,6 +27,7 @@ Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run instal
   config/          # extra_model_paths.yaml → ComfyUI
   scripts/
     common.sh
+    custom-setup.sh  # RunPod ComfyUI template (Krea + MiniMax)
     comfyui/       # setup.sh, start.sh, stop.sh
     filebrowser/   # setup.sh, start.sh, stop.sh
     packs/         # krea.sh, zimage.sh, …
@@ -46,6 +47,7 @@ Custom ComfyUI on RunPod PyTorch base; models on `/workspace/models`. Run instal
 | FileBrowser setup | `bash /workspace/custom-setup/scripts/filebrowser/setup.sh` |
 | FileBrowser start | `bash /workspace/custom-setup/scripts/filebrowser/start.sh` |
 | FileBrowser stop  | `bash /workspace/custom-setup/scripts/filebrowser/stop.sh` |
+| RunPod ComfyUI template (Krea + MiniMax) | `bash /workspace/custom-setup/scripts/custom-setup.sh` |
 | Krea setup     | `bash /workspace/custom-setup/scripts/packs/krea.sh` |
 | Z-Image        | `bash /workspace/custom-setup/scripts/packs/zimage.sh` |
 | Flux i2i       | `bash /workspace/custom-setup/scripts/packs/flux.sh` |
@@ -68,6 +70,8 @@ Fixed paths (no env vars):
 
 RunPod PyTorch image (4090-class): `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404` (PyTorch 2.9.1, CUDA 12.8.1)
 
+RunPod ComfyUI image: `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8` — ComfyUI at `/workspace/runpod-slim/ComfyUI`, models under `ComfyUI/models/`; Dev mode via Settings GUI
+
 ## Architecture
 
 `scripts/comfyui/setup.sh` (once per volume):
@@ -83,7 +87,9 @@ Each `scripts/packs/*.sh`:
 1. `cp` workflow JSON from `$REPO/workflows/` → ComfyUI user folder
 2. `fetch dest url` into `/workspace/models/`
 
-Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh`.
+Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh` (PyTorch path); RunPod ComfyUI template — enable in Settings GUI.
+
+`scripts/custom-setup.sh` (RunPod ComfyUI template only): clone comfyui-krea2edit; curl Krea 2 + MiniMax H3 into `$COMFYUI/models/`; then `rm -rf /workspace/custom-setup`. Workflows uploaded manually (see README).
 
 ## Decisions
 
@@ -94,6 +100,7 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh`.
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `scripts/packs/*.sh`; delete unused scripts freely.
 - Pack roles: Krea 2 t2i + i2i (comfyui-krea2edit); Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
+- RunPod ComfyUI template (`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8`): `/workspace/runpod-slim/ComfyUI`, models in `ComfyUI/models/`; `scripts/custom-setup.sh` clones comfyui-krea2edit + curls Krea/MiniMax weights (no `extra_model_paths.yaml`). Dev mode via Settings GUI.
 - Krea 2 pack: workflows `text_to_image_krea_2.json`, `image_to_image_krea_2.json`; LoRAs filterbypass3, realism engine v2, realism v2, identity edit v1.2.
 - Local model filenames: lowercase, underscore-separated. Workflow JSON must match.
 - Scripts grouped: `comfyui/`, `filebrowser/`, `packs/`; shared `scripts/common.sh`.

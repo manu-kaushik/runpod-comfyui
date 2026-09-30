@@ -2,17 +2,25 @@
 
 Per-workflow shell scripts for ComfyUI on RunPod.
 
-ComfyUI: `/workspace/comfyui`
-
-Models: `/workspace/models/`
-
-Repo: `/workspace/custom-setup`
-
-Use a **RunPod PyTorch** pod (e.g. `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404`), expose ports **8188** (ComfyUI) and **8080** (FileBrowser, optional), then run ComfyUI setup once (Dev Mode is enabled automatically).
+Repo on pod: `/workspace/custom-setup`
 
 **Local model filenames:** lowercase, underscore-separated. Workflow JSON must match those names.
 
-## ComfyUI
+Two supported templates:
+
+| Template | Image | ComfyUI | Models | Setup |
+| -------- | ----- | ------- | ------ | ----- |
+| **PyTorch** (full packs) | `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404` | `/workspace/comfyui` | `/workspace/models/` | `scripts/comfyui/setup.sh` + `scripts/packs/*.sh` |
+| **RunPod ComfyUI** (Krea + MiniMax) | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8` | `/workspace/runpod-slim/ComfyUI` | `ComfyUI/models/` | `scripts/custom-setup.sh` |
+
+Expose port **8188** (ComfyUI). FileBrowser (**8080**) applies to the PyTorch path below.
+
+## PyTorch template
+
+ComfyUI: `/workspace/comfyui` · Models: `/workspace/models/`
+
+Dev Mode is enabled automatically by `comfyui/setup.sh`.
+
 ### One-time setup
 
 Run once per volume (persists under `/workspace`):
@@ -63,7 +71,31 @@ bash /workspace/custom-setup/scripts/filebrowser/start.sh
 bash /workspace/custom-setup/scripts/filebrowser/stop.sh
 ```
 
-## Packs
+## RunPod ComfyUI template
+
+Image: **`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8`** (ComfyUI **v0.30.0**, CUDA 12.8).
+
+ComfyUI: `/workspace/runpod-slim/ComfyUI` · Models: `/workspace/runpod-slim/ComfyUI/models/`
+
+Use `scripts/custom-setup.sh` instead of `comfyui/setup.sh` and the pack scripts. This path currently covers **Krea 2** and **MiniMax H3** only (models + `comfyui-krea2edit` for Krea i2i).
+
+One-time on the pod (clone repo, run setup, then remove the repo):
+
+```bash
+git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup
+bash /workspace/custom-setup/scripts/custom-setup.sh
+rm -rf /workspace/custom-setup
+```
+
+`custom-setup.sh` clones **[comfyui-krea2edit](https://github.com/lbouaraba/comfyui-krea2edit)** (required for Krea 2 i2i) and downloads Krea 2 + MiniMax H3 model files into `/workspace/runpod-slim/ComfyUI/models/`.
+
+Upload workflows manually in ComfyUI (or into `/workspace/runpod-slim/ComfyUI/user/default/workflows/`). Files in this repo: `text_to_image_krea_2.json`, `image_to_image_krea_2.json`, `text_to_video_minimax_h3.json`, `image_to_video_minimax_h3.json`.
+
+After ComfyUI is running, enable **Dev mode** in the UI: open **Settings** (gear icon) → turn on **Dev mode** → save/apply. Dev mode exposes workflow model metadata (download links on loader nodes) and subgraph editing; the PyTorch path enables it in `setup.sh`, this template does not unless you toggle it here.
+
+Restart ComfyUI once after `custom-setup.sh` so the new custom node loads.
+
+## Packs (PyTorch template only)
 
 Run once per workflow (downloads models, copies workflow JSON):
 
@@ -89,6 +121,7 @@ custom-setup/
   scripts/
     common.sh
     cleanup.sh
+    custom-setup.sh
     comfyui/
       setup.sh
       start.sh

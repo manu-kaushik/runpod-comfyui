@@ -87,7 +87,7 @@ bash /workspace/custom-setup/scripts/custom-setup.sh
 rm -rf /workspace/custom-setup
 ```
 
-`custom-setup.sh` clones **[comfyui-krea2edit](https://github.com/lbouaraba/comfyui-krea2edit)** (required for Krea 2 i2i) and downloads Krea 2 + MiniMax H3 model files into `/workspace/runpod-slim/ComfyUI/models/`.
+`custom-setup.sh` clones **[comfyui-krea2edit](https://github.com/lbouaraba/comfyui-krea2edit)** (required for Krea 2 i2i) and downloads Krea 2 + MiniMax H3 weights into `/workspace/runpod-slim/ComfyUI/models/` (UNET checkpoints in **`models/unet/`**, same as ComfyUI v0.30).
 
 Upload workflows manually in ComfyUI (or into `/workspace/runpod-slim/ComfyUI/user/default/workflows/`). Files in this repo: `text_to_image_krea_2.json`, `image_to_image_krea_2.json`, `text_to_video_minimax_h3.json`, `image_to_video_minimax_h3.json`.
 

@@ -25,13 +25,13 @@ else
   echo "ok $KREA2EDIT"
 fi
 
-mkdir -p "$MODELS/diffusion_models"
+mkdir -p "$MODELS/unet"
 mkdir -p "$MODELS/text_encoders"
 mkdir -p "$MODELS/vae"
 mkdir -p "$MODELS/loras"
 
 # Krea 2
-fetch "$MODELS/diffusion_models/krea2_turbo_fp8_scaled.safetensors" \
+fetch "$MODELS/unet/krea2_turbo_fp8_scaled.safetensors" \
   https://huggingface.co/Comfy-Org/Krea-2/resolve/main/diffusion_models/krea2_turbo_fp8_scaled.safetensors
 
 fetch "$MODELS/text_encoders/qwen3vl_4b_fp8_scaled.safetensors" \
@@ -53,7 +53,7 @@ fetch "$MODELS/loras/krea2_identity_edit_v1_2.safetensors" \
   https://huggingface.co/conradlocke/krea2-identity-edit/resolve/main/krea2_identity_edit_v1_2.safetensors
 
 # MiniMax H3
-fetch "$MODELS/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors" \
+fetch "$MODELS/unet/minimax_h3_fl2va_pruned_int8_convrot.safetensors" \
   https://huggingface.co/Comfy-Org/MiniMax-H3/resolve/main/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors
 
 fetch "$MODELS/loras/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors" \

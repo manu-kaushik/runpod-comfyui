@@ -89,7 +89,7 @@ Each `scripts/packs/*.sh`:
 
 Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh` (PyTorch path); RunPod ComfyUI template — enable in Settings GUI.
 
-`scripts/custom-setup.sh` (RunPod ComfyUI template only): clone comfyui-krea2edit; curl Krea 2 + MiniMax H3 into `$COMFYUI/models/`; then `rm -rf /workspace/custom-setup`. Workflows uploaded manually (see README).
+`scripts/custom-setup.sh` (RunPod ComfyUI template only): clone comfyui-krea2edit; `fetch` Krea 2 + MiniMax H3 into `$COMFYUI/models/` (UNET weights → `models/unet/`); then `rm -rf /workspace/custom-setup`. Workflows uploaded manually (see README).
 
 ## Decisions
 

@@ -11,7 +11,7 @@ Two supported templates:
 | Template | Image | ComfyUI | Models | Setup |
 | -------- | ----- | ------- | ------ | ----- |
 | **PyTorch** (full packs) | `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404` | `/workspace/comfyui` | `/workspace/models/` | `scripts/comfyui/setup.sh` + `scripts/packs/*.sh` |
-| **RunPod ComfyUI** (Krea + MiniMax) | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8` | `/workspace/runpod-slim/ComfyUI` | `ComfyUI/models/` | `scripts/custom-setup.sh` |
+| **RunPod ComfyUI** (Krea + MiniMax) | `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` | `/workspace/runpod-slim/ComfyUI` | `ComfyUI/models/` | `scripts/custom-setup.sh` |
 
 Expose port **8188** (ComfyUI). FileBrowser (**8080**) applies to the PyTorch path below.
 
@@ -73,7 +73,7 @@ bash /workspace/custom-setup/scripts/filebrowser/stop.sh
 
 ## RunPod ComfyUI template
 
-Image: **`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8`** (ComfyUI **v0.30.0**, CUDA 12.8).
+Image: **`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0`** (ComfyUI **v0.30.0**, CUDA 13.0). Requires a host with NVIDIA driver **R580+**.
 
 ComfyUI: `/workspace/runpod-slim/ComfyUI` · Models: `/workspace/runpod-slim/ComfyUI/models/`
 

@@ -10,7 +10,7 @@ RunPod: PyTorch path — `scripts/comfyui/setup.sh` then `scripts/packs/*.sh`. R
 
 ## Current focus
 
-Two images documented: PyTorch (full packs) and `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8` (custom-setup).
+Two images documented: PyTorch (full packs) and `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` (custom-setup).
 
 ## Stack
 
@@ -70,7 +70,7 @@ Fixed paths (no env vars):
 
 RunPod PyTorch image (4090-class): `runpod/pytorch:1.3.3-cu1281-torch291-ubuntu2404` (PyTorch 2.9.1, CUDA 12.8.1)
 
-RunPod ComfyUI image: `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8` — ComfyUI at `/workspace/runpod-slim/ComfyUI`, models under `ComfyUI/models/`; Dev mode via Settings GUI
+RunPod ComfyUI image: `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` (CUDA 13.0; driver R580+) — ComfyUI at `/workspace/runpod-slim/ComfyUI`, models under `ComfyUI/models/`; Dev mode via Settings GUI
 
 ## Architecture
 
@@ -100,12 +100,13 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh` (P
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `scripts/packs/*.sh`; delete unused scripts freely.
 - Pack roles: Krea 2 t2i + i2i (comfyui-krea2edit); Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
-- RunPod ComfyUI template (`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8`): `/workspace/runpod-slim/ComfyUI`, models in `ComfyUI/models/`; `scripts/custom-setup.sh` clones comfyui-krea2edit + curls Krea/MiniMax weights (no `extra_model_paths.yaml`). Dev mode via Settings GUI.
+- RunPod ComfyUI template (`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0`): `/workspace/runpod-slim/ComfyUI`, models in `ComfyUI/models/`; `scripts/custom-setup.sh` clones comfyui-krea2edit + curls Krea/MiniMax weights (no `extra_model_paths.yaml`). Dev mode via Settings GUI.
 - Krea 2 pack: workflows `text_to_image_krea_2.json`, `image_to_image_krea_2.json`; LoRAs filterbypass3, realism engine v2, realism v2, identity edit v1.2.
 - Local model filenames: lowercase, underscore-separated. Workflow JSON must match.
 - Scripts grouped: `comfyui/`, `filebrowser/`, `packs/`; shared `scripts/common.sh`.
 - After clone on pod, run `scripts/cleanup.sh` to drop `.git`, `.gitignore`, `README.md`, `SOURCE.md`, `AGENTS.md`.
-- Stay on CUDA 12.8 (`cu1281`) for 4090-class pods; CUDA 13 only for Blackwell with fresh venv and full pack re-test.
+- PyTorch path: stay on CUDA 12.8 (`cu1281`) for 4090-class pods unless migrating the whole PyTorch stack to CUDA 13.
+- RunPod ComfyUI template uses CUDA 13.0 image above (not interchangeable with the PyTorch CUDA 12.8 image).
 - ComfyUI launch: default VRAM management (no `--highvram`); `--highvram` OOMs MiniMax H3 on 4090 24 GB.
 - After changing RunPod PyTorch image, recreate `/workspace/comfyui/.venv` (or `FRESH=true` setup) so extensions match image torch.
 - FileBrowser: `FILEBROWSER_VERSION` (default `v2.63.23`) overrides the GitHub release fetched when the binary is missing.

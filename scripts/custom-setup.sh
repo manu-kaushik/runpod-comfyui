@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# RunPod ComfyUI image runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda12.8
+# RunPod ComfyUI image runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0
 # Krea 2 + MiniMax H3 models and comfyui-krea2edit (Krea i2i).
 # ComfyUI: /workspace/runpod-slim/ComfyUI
 # Run: bash /workspace/custom-setup/scripts/custom-setup.sh

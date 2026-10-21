@@ -50,9 +50,7 @@ Two images documented: PyTorch (full packs) and `runpod/comfyui:1.3.3-comfyuiv0.
 | RunPod ComfyUI template (Krea + MiniMax) | `bash /workspace/custom-setup/scripts/custom-setup.sh` |
 | Krea setup     | `bash /workspace/custom-setup/scripts/packs/krea.sh` |
 | Z-Image        | `bash /workspace/custom-setup/scripts/packs/zimage.sh` |
-| Flux i2i       | `bash /workspace/custom-setup/scripts/packs/flux.sh` |
 | MiniMax t2v+i2v| `bash /workspace/custom-setup/scripts/packs/minimax.sh` |
-| Qwen i2i       | `bash /workspace/custom-setup/scripts/packs/qwen.sh` |
 | Clone repo     | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup` |
 | Pod cleanup    | `bash /workspace/custom-setup/scripts/cleanup.sh` |
 
@@ -78,7 +76,7 @@ RunPod ComfyUI image: `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` (CUDA 13.0;
 
 1. Clone pinned ComfyUI tag into `/workspace/comfyui`
 2. venv; `pip install -r requirements.txt` excluding torch (keep base image CUDA torch)
-3. Clone ComfyUI-GGUF, ComfyUI-Manager, comfyui-krea2edit
+3. Clone ComfyUI-Manager, comfyui-krea2edit
 4. Install `config/extra_model_paths.yaml` → `$COMFYUI/extra_model_paths.yaml`
 5. Write `comfyui_args.txt` (listen 8188, disable API nodes, input/output paths; no `--highvram` — OOM on 24 GB with H3)
 
@@ -99,7 +97,7 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh` (P
 - `COMFYUI_REF` env overrides default tag (`v0.37.0`).
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `scripts/packs/*.sh`; delete unused scripts freely.
-- Pack roles: Krea 2 t2i + i2i (comfyui-krea2edit); Z-Image t2i; Flux i2i; MiniMax H3 video (t2v + i2v); Qwen Image Edit 2511 i2i.
+- Pack roles: Krea 2 t2i + i2i (comfyui-krea2edit); Z-Image t2i; MiniMax H3 video (t2v + i2v).
 - RunPod ComfyUI template (`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0`): `/workspace/runpod-slim/ComfyUI`, models in `ComfyUI/models/`; `scripts/custom-setup.sh` clones comfyui-krea2edit + curls Krea/MiniMax weights (no `extra_model_paths.yaml`). Dev mode via Settings GUI.
 - Krea 2 pack: workflows `text_to_image_krea_2.json`, `image_to_image_krea_2.json`; LoRAs filterbypass3, realism engine v2, realism v2, identity edit v1.2.
 - Local model filenames: lowercase, underscore-separated. Workflow JSON must match.
@@ -113,5 +111,5 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh` (P
 
 ## Deferred
 
-- Confirm install + pack scripts on PyTorch pod: torch, ComfyUI start, GGUF, Dev Mode, one workflow per pack.
+- Confirm install + pack scripts on PyTorch pod: torch, ComfyUI start, Dev Mode, one workflow per pack.
 - CUDA 13 migration: e.g. `runpod/pytorch:1.0.2-cu1300-torch291-ubuntu2404`; requires host driver R580+, not a drop-in swap.

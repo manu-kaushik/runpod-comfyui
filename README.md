@@ -34,11 +34,9 @@ bash /workspace/custom-setup/scripts/comfyui/setup.sh
 
 `cleanup.sh` removes `.git`, `.gitignore`, `README.md`, `SOURCE.md`, and `AGENTS.md`.
 
-`setup.sh` clones ComfyUI, installs ComfyUI-GGUF + ComfyUI-Manager, and points ComfyUI at `/workspace/models` via `extra_model_paths.yaml` (no symlinks). Input/output use `/workspace/input` and `/workspace/output` via launch args. Dev Mode is enabled automatically.
+`setup.sh` clones ComfyUI, installs ComfyUI-Manager, and points ComfyUI at `/workspace/models` via `extra_model_paths.yaml` (no symlinks). Input/output use `/workspace/input` and `/workspace/output` via launch args. Dev Mode is enabled automatically.
 
 Override ComfyUI version: `COMFYUI_REF=v0.37.0 bash /workspace/custom-setup/scripts/comfyui/setup.sh`
-
-After the first start, open ComfyUI Manager and confirm **ComfyUI-GGUF** is installed correctly (GGUF workflows need it). If it shows missing dependencies or failed install, use Manager's **Try fix** button on that node.
 
 ### Start / stop
 After a pod restart:
@@ -109,9 +107,7 @@ Each pack script copies workflow JSON into ComfyUI's user folder and curls model
 | ------------------- | -------- | ----------------------------------------------------------- |
 | `packs/krea.sh` | t2i, i2i | `text_to_image_krea_2.json`, `image_to_image_krea_2.json` |
 | `packs/zimage.sh` | t2i | `text_to_image_z_image_turbo.json` |
-| `packs/flux.sh` | i2i | `image_to_image_flux_1_kontext_dev.json` |
 | `packs/minimax.sh` | t2v, i2v | `text_to_video_minimax_h3.json`, `image_to_video_minimax_h3.json` |
-| `packs/qwen.sh` | i2i | `image_to_image_qwen_image_edit_2511.json` |
 
 ## Repository layout
 
@@ -133,8 +129,6 @@ custom-setup/
     packs/
       krea.sh
       zimage.sh
-      flux.sh
       minimax.sh
-      qwen.sh
   workflows/
 ```

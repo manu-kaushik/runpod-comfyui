@@ -66,7 +66,6 @@ clone_node() {
     fi
 }
 
-clone_node https://github.com/city96/ComfyUI-GGUF.git ComfyUI-GGUF
 clone_node https://github.com/ltdrdata/ComfyUI-Manager.git ComfyUI-Manager
 clone_node https://github.com/lbouaraba/comfyui-krea2edit.git comfyui-krea2edit
 

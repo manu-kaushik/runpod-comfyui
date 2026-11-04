@@ -6,11 +6,11 @@ Persistent project record for this repository — not chat history, not summarie
 
 ## Overview
 
-RunPod: PyTorch path — `scripts/comfyui/setup.sh` then pack scripts (Krea, Z-Image, MiniMax). RunPod ComfyUI template — `scripts/custom-setup.sh` (Krea + MiniMax only). Repository: https://github.com/manu-kaushik/runpod-comfyui
+RunPod: PyTorch path — `scripts/comfyui/setup.sh` then pack scripts (Krea, MiniMax). RunPod ComfyUI template — `scripts/custom-setup.sh` (Krea + MiniMax only). Repository: https://github.com/manu-kaushik/runpod-comfyui
 
 ## Current focus
 
-Two RunPod images: PyTorch (`cu1281`, three packs) and ComfyUI template `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` (`custom-setup.sh`).
+Two RunPod images: PyTorch (`cu1281`, Krea + MiniMax packs) and ComfyUI template `runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0` (`custom-setup.sh`).
 
 ## Stack
 
@@ -30,7 +30,7 @@ Two RunPod images: PyTorch (`cu1281`, three packs) and ComfyUI template `runpod/
     custom-setup.sh  # RunPod ComfyUI template (Krea + MiniMax)
     comfyui/       # setup.sh, start.sh, stop.sh
     filebrowser/   # setup.sh, start.sh, stop.sh
-    packs/         # krea.sh, zimage.sh, minimax.sh
+    packs/         # krea.sh, minimax.sh
   workflows/
   README.md
   SOURCE.md
@@ -49,7 +49,6 @@ Two RunPod images: PyTorch (`cu1281`, three packs) and ComfyUI template `runpod/
 | FileBrowser stop  | `bash /workspace/custom-setup/scripts/filebrowser/stop.sh` |
 | RunPod ComfyUI template (Krea + MiniMax) | `bash /workspace/custom-setup/scripts/custom-setup.sh` |
 | Krea setup     | `bash /workspace/custom-setup/scripts/packs/krea.sh` |
-| Z-Image        | `bash /workspace/custom-setup/scripts/packs/zimage.sh` |
 | MiniMax t2v+i2v| `bash /workspace/custom-setup/scripts/packs/minimax.sh` |
 | Clone repo     | `git clone --depth 1 https://github.com/manu-kaushik/runpod-comfyui /workspace/custom-setup` |
 | Pod cleanup    | `bash /workspace/custom-setup/scripts/cleanup.sh` |
@@ -97,7 +96,7 @@ Dev Mode: enabled in `user/default/comfy.settings.json` by `comfyui/setup.sh` (P
 - `COMFYUI_REF` env overrides default tag (`v0.37.0`).
 - No `models.txt`, or `packs.txt` — URLs live in each pack script.
 - New pack = new `scripts/packs/*.sh`; delete unused scripts freely.
-- Pack roles: Krea 2 t2i + i2i (comfyui-krea2edit); Z-Image t2i; MiniMax H3 video (t2v + i2v).
+- Pack roles: Krea 2 t2i + i2i (comfyui-krea2edit); MiniMax H3 video (t2v + i2v).
 - PyTorch `setup.sh` installs ComfyUI-Manager and comfyui-krea2edit.
 - RunPod ComfyUI template (`runpod/comfyui:1.3.3-comfyuiv0.30.0-cuda13.0`): `/workspace/runpod-slim/ComfyUI`, models in `ComfyUI/models/`; `scripts/custom-setup.sh` clones comfyui-krea2edit + curls Krea/MiniMax weights (no `extra_model_paths.yaml`). Dev mode via Settings GUI.
 - Krea 2 pack: workflows `text_to_image_krea_2.json`, `image_to_image_krea_2.json`; LoRAs filterbypass3, realism engine v2, realism v2, identity edit v1.2.

@@ -106,7 +106,6 @@ Each pack script copies workflow JSON into ComfyUI's user folder and curls model
 | Script | Mode | Workflow(s) |
 | ------------------- | -------- | ----------------------------------------------------------- |
 | `packs/krea.sh` | t2i, i2i | `text_to_image_krea_2.json`, `image_to_image_krea_2.json` |
-| `packs/zimage.sh` | t2i | `text_to_image_z_image_turbo.json` |
 | `packs/minimax.sh` | t2v, i2v | `text_to_video_minimax_h3.json`, `image_to_video_minimax_h3.json` |
 
 ## Repository layout
@@ -128,7 +127,6 @@ custom-setup/
       stop.sh
     packs/
       krea.sh
-      zimage.sh
       minimax.sh
   workflows/
 ```
